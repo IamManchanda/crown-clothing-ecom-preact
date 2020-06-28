@@ -1,10 +1,14 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+
+import "./app.scss";
 import HomePage from "./pages/home-page";
 import ShopPage from "./pages/shop-page";
+import HeaderNavigation from "./components/header-navigation";
 
 const App = () => (
-  <div>
+  <div className="app">
+    <HeaderNavigation />
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route path="/shop" component={ShopPage} />
