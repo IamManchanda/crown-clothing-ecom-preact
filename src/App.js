@@ -1,5 +1,5 @@
 import React from "react";
-import Homepage from "./pages/homepage";
+import Homepage from "./pages/home-page";
 
 const App = () => (
   <div>
