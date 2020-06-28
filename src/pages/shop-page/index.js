@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import "./styles.scss";
+
 import CollectionPreview from "../../components/collection-preview";
 import SHOP_DATA from "../../fixtures/shop-data";
 
