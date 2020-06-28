@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Homepage from "./pages/home-page";
+import Homepage from "./home-page";
 
 const App = () => (
   <div>
