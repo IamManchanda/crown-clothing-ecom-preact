@@ -6,14 +6,10 @@ import CustomButton from "../custom-button";
 import { signInWithGoogle } from "../../firebase/utils";
 
 class SignIn extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      email: "",
-      password: "",
-    };
-  }
+  state = {
+    email: "",
+    password: "",
+  };
 
   methods = {
     handleFormSubmit: (event) => {

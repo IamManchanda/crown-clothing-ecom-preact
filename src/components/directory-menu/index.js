@@ -5,12 +5,9 @@ import MenuItem from "../menu-item";
 import DIRECTORY_MENU_DATA from "../../fixtures/directory-menu-data";
 
 class DirectoryMenu extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sections: DIRECTORY_MENU_DATA,
-    };
-  }
+  state = {
+    sections: DIRECTORY_MENU_DATA,
+  };
 
   render() {
     const { state } = this;

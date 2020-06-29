@@ -10,13 +10,9 @@ import HeaderNavigation from "./components/header-navigation";
 import { auth } from "./firebase/utils";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentUser: null,
-    };
-  }
+  state = {
+    currentUser: null,
+  };
 
   unsubscribeFromAuth = null;
 
