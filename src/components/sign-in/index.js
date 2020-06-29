@@ -26,9 +26,10 @@ class SignIn extends Component {
   };
 
   render() {
-    const { state, methods } = this;
-    const { email, password } = state;
-    const { handleFormSubmit, handleFormInputChange } = methods;
+    const {
+      state: { email, password } = {},
+      methods: { handleFormSubmit, handleFormInputChange } = {},
+    } = this;
     return (
       <div className="sign-in">
         <h2>I already have an account.</h2>

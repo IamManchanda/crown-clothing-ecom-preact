@@ -10,8 +10,7 @@ class DirectoryMenu extends Component {
   };
 
   render() {
-    const { state } = this;
-    const { sections } = state;
+    const { state: { sections } = {} } = this;
     return (
       <div className="directory-menu">
         {sections.map(({ id, ...otherSectionProps }) => (
