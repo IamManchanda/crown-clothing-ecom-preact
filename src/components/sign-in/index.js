@@ -32,9 +32,9 @@ class SignIn extends Component {
     } = this;
     return (
       <div className="sign-in">
-        <h2>I already have an account.</h2>
+        <h2 className="title">I already have an account.</h2>
         <span>Sign in with your email and password.</span>
-        <form onSubmit={handleFormSubmit}>
+        <form className="sign-in-form" onSubmit={handleFormSubmit}>
           <FormInput
             label="Email"
             name="email"
@@ -51,7 +51,6 @@ class SignIn extends Component {
             onChange={handleFormInputChange}
             required
           />
-
           <div className="button-group">
             <CustomButton type="submit">Sign In</CustomButton>
             <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
