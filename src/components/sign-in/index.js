@@ -4,12 +4,10 @@ import "./styles.scss";
 import FormInput from "../form-input";
 import CustomButton from "../custom-button";
 import { auth, signInWithGoogle } from "../../firebase/utils";
+import { emptySignInState } from "../../constants/empty-auth-state";
 
 class SignIn extends Component {
-  state = {
-    email: "",
-    password: "",
-  };
+  state = { ...emptySignInState };
 
   methods = {
     handleFormSubmit: async (event) => {
@@ -17,10 +15,7 @@ class SignIn extends Component {
       const { state: { email, password } = {} } = this;
       try {
         await auth.signInWithEmailAndPassword(email, password);
-        this.setState({
-          email: "",
-          password: "",
-        });
+        this.setState({ ...emptySignInState });
       } catch (error) {
         console.error(error);
       }
