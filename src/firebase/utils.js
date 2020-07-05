@@ -2,15 +2,26 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
+const {
+  REACT_APP_FIREBASE_API_KEY,
+  REACT_APP_FIREBASE_AUTH_DOMAIN,
+  REACT_APP_FIREBASE_DATABASE_URL,
+  REACT_APP_FIREBASE_PROJECT_ID,
+  REACT_APP_FIREBASE_STORAGE_BUCKET,
+  REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  REACT_APP_FIREBASE_APP_ID,
+  REACT_APP_FIREBASE_MEASUREMENT_ID,
+} = process.env;
+
 const config = {
-  apiKey: "AIzaSyA0gNH5RQKkqb8mkQ1WSGvKUqg1CYi597Y",
-  authDomain: "db-crown-clothing-ecom-react.firebaseapp.com",
-  databaseURL: "https://db-crown-clothing-ecom-react.firebaseio.com",
-  projectId: "db-crown-clothing-ecom-react",
-  storageBucket: "db-crown-clothing-ecom-react.appspot.com",
-  messagingSenderId: "821363287292",
-  appId: "1:821363287292:web:f44f1d4501738b2722a379",
-  measurementId: "G-YRDVDNBSX7",
+  apiKey: REACT_APP_FIREBASE_API_KEY,
+  authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: REACT_APP_FIREBASE_APP_ID,
+  measurementId: REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
