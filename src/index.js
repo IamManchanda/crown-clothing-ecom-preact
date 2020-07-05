@@ -5,10 +5,11 @@ import { Provider } from "react-redux";
 
 import "./index.scss";
 import App from "./app";
+import store from "./store";
 
 render(
   <StrictMode>
-    <Provider>
+    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
