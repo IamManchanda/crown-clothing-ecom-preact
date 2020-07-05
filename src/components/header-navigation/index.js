@@ -5,6 +5,7 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 import "./styles.scss";
 import { auth } from "../../firebase/utils";
+import CartIcon from "../cart-icon";
 
 const HeaderNavigation = ({ currentUser }) => (
   <div className="header-navigation">
@@ -27,6 +28,7 @@ const HeaderNavigation = ({ currentUser }) => (
           SIGN IN
         </Link>
       )}
+      <CartIcon />
     </div>
   </div>
 );
