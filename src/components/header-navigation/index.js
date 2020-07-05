@@ -8,7 +8,7 @@ import { auth } from "../../firebase/utils";
 import CartIcon from "../cart-icon";
 import CartDropdown from "../cart-dropdown";
 
-const HeaderNavigation = ({ currentUser }) => (
+const HeaderNavigation = ({ currentUser, hidden }) => (
   <div className="header-navigation">
     <Link to="/" className="logo-container">
       <Logo className="logo" />
@@ -31,10 +31,12 @@ const HeaderNavigation = ({ currentUser }) => (
       )}
       <CartIcon />
     </div>
-    <CartDropdown />
+    {!hidden && <CartDropdown />}
   </div>
 );
 
-const mapStateToProps = ({ user: { currentUser } = {} }) => ({ currentUser });
-
+const mapStateToProps = ({
+  user: { currentUser } = {},
+  cart: { hidden } = {},
+}) => ({ currentUser, hidden });
 export default connect(mapStateToProps)(HeaderNavigation);
