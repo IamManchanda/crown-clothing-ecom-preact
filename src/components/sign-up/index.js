@@ -4,10 +4,10 @@ import "./styles.scss";
 import FormInput from "../form-input";
 import CustomButton from "../custom-button";
 import { auth, createUserProfileDocument } from "../../firebase/utils";
-import { emptySignUpState } from "../../constants/empty-auth-state";
+import { EMPTY_SIGN_UP_STATE } from "../../constants/empty-auth-state";
 
 class SignUp extends Component {
-  state = { ...emptySignUpState };
+  state = { ...EMPTY_SIGN_UP_STATE };
 
   methods = {
     handleFormSubmit: async (event) => {
@@ -25,7 +25,7 @@ class SignUp extends Component {
           password,
         );
         await createUserProfileDocument(user, { displayName });
-        this.setState({ ...emptySignUpState });
+        this.setState({ ...EMPTY_SIGN_UP_STATE });
       } catch (error) {
         console.error(error);
       }
