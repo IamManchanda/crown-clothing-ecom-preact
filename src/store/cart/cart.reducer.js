@@ -1,5 +1,5 @@
 import { TOGGLE_CART_HIDDEN, ADD_CART_ITEM } from "./cart.types";
-import { addItemToCart } from "./cart.utils.js";
+import { addItemToCart } from "./cart.utils";
 import INITIAL_CART_STATE from "../../constants/initial-cart-state";
 
 const cartReducer = (state = INITIAL_CART_STATE, { type, payload }) => {
