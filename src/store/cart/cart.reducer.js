@@ -1,7 +1,7 @@
 import {
   TOGGLE_CART_HIDDEN,
-  ADD_CART_ITEM,
-  REMOVE_CART_ITEM,
+  ADD_ITEM,
+  REMOVE_ITEM,
   CLEAR_ITEM_FROM_CART,
 } from "./cart.types";
 import { addItemToCart, removeItemFromCart } from "./cart.utils";
@@ -11,12 +11,12 @@ const cartReducer = (state = INITIAL_CART_STATE, { type, payload }) => {
   switch (type) {
     case TOGGLE_CART_HIDDEN:
       return { ...state, hidden: !state.hidden };
-    case ADD_CART_ITEM:
+    case ADD_ITEM:
       return {
         ...state,
         cartItems: addItemToCart(state.cartItems, payload),
       };
-    case REMOVE_CART_ITEM:
+    case REMOVE_ITEM:
       return {
         ...state,
         cartItems: removeItemFromCart(state.cartItems, payload),
