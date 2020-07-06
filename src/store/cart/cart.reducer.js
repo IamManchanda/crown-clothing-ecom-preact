@@ -5,9 +5,9 @@ import {
   CLEAR_ITEM_FROM_CART,
 } from "./cart.types";
 import { addItemToCart, removeItemFromCart } from "./cart.utils";
-import INITIAL_CART_STATE from "../../constants/initial-cart-state";
+import CART_INITIAL_STATE from "./cart.initial-state";
 
-const cartReducer = (state = INITIAL_CART_STATE, { type, payload }) => {
+const cartReducer = (state = CART_INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case TOGGLE_CART_HIDDEN:
       return { ...state, hidden: !state.hidden };

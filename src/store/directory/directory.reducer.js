@@ -1,6 +1,6 @@
-import INITIAL_DIRECTORY_STATE from "../../constants/initial-directory-state";
+import DIRECTORY_INITIAL_STATE from "./directory.initial-state";
 
-const directoryReducer = (state = INITIAL_DIRECTORY_STATE, { type }) => {
+const directoryReducer = (state = DIRECTORY_INITIAL_STATE, { type }) => {
   switch (type) {
     default:
       return state;

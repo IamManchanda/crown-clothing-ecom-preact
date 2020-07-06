@@ -1,7 +1,7 @@
 import { SET_CURRENT_USER } from "./user.types";
-import INITIAL_USER_STATE from "../../constants/initial-user-state";
+import USER_INITIAL_STATE from "./user.initial-state";
 
-const userReducer = (state = INITIAL_USER_STATE, { type, payload }) => {
+const userReducer = (state = USER_INITIAL_STATE, { type, payload }) => {
   switch (type) {
     case SET_CURRENT_USER:
       return { ...state, currentUser: payload };

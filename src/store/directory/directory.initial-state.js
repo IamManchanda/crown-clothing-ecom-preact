@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 
-const INITIAL_DIRECTORY_STATE = {
+const DIRECTORY_INITIAL_STATE = {
   sections: [
     {
       id: uuidv4(),
@@ -37,4 +37,4 @@ const INITIAL_DIRECTORY_STATE = {
   ],
 };
 
-export default INITIAL_DIRECTORY_STATE;
+export default DIRECTORY_INITIAL_STATE;
