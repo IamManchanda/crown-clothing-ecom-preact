@@ -8,6 +8,7 @@ import HomePage from "./pages/home-page";
 import ShopPage from "./pages/shop-page";
 import ContactPage from "./pages/contact-page";
 import AuthPage from "./pages/auth-page";
+import CheckoutPage from "./pages/checkout-page";
 import HeaderNavigation from "./components/header-navigation";
 import { auth, createUserProfileDocument } from "./firebase/utils";
 import { setCurrentUser } from "./store/user/user.actions";
@@ -43,6 +44,7 @@ class App extends Component {
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
           <Route exact path="/contact" component={ContactPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
           <Route
             exact
             path="/auth"
