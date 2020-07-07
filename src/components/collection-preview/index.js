@@ -1,9 +1,11 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import "./styles.scss";
 import CollectionItem from "../collection-item";
+import CustomButton from "../custom-button";
 
-const CollectionPreview = ({ title, items }) => (
+const CollectionPreview = ({ title, items, routeName, history }) => (
   <div className="collection-preview">
     <h1 className="title">{title.toUpperCase()}</h1>
     <div className="preview">
@@ -13,7 +15,12 @@ const CollectionPreview = ({ title, items }) => (
           <CollectionItem key={item.id} item={item} />
         ))}
     </div>
+    <div className="footer">
+      <CustomButton onClick={() => history.push(`/shop/${routeName}`)}>
+        Visit {title.toUpperCase()} Category
+      </CustomButton>
+    </div>
   </div>
 );
 
-export default CollectionPreview;
+export default withRouter(CollectionPreview);
