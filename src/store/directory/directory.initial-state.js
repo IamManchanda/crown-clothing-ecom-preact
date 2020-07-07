@@ -10,15 +10,15 @@ const DIRECTORY_INITIAL_STATE = {
     },
     {
       id: uuidv4(),
-      title: "jackets",
-      imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
-      linkUrl: "shop/jackets",
-    },
-    {
-      id: uuidv4(),
       title: "sneakers",
       imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
       linkUrl: "shop/sneakers",
+    },
+    {
+      id: uuidv4(),
+      title: "jackets",
+      imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+      linkUrl: "shop/jackets",
     },
     {
       id: uuidv4(),
