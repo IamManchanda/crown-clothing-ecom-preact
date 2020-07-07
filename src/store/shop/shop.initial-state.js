@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 
 const SHOP_INITIAL_STATE = {
-  collections: [
-    {
+  collections: {
+    hats: {
       id: uuidv4(),
       title: "Hats",
       routeName: "hats",
@@ -63,7 +63,7 @@ const SHOP_INITIAL_STATE = {
         },
       ],
     },
-    {
+    sneakers: {
       id: uuidv4(),
       title: "Sneakers",
       routeName: "sneakers",
@@ -118,7 +118,7 @@ const SHOP_INITIAL_STATE = {
         },
       ],
     },
-    {
+    jackets: {
       id: uuidv4(),
       title: "Jackets",
       routeName: "jackets",
@@ -155,7 +155,7 @@ const SHOP_INITIAL_STATE = {
         },
       ],
     },
-    {
+    womens: {
       id: uuidv4(),
       title: "Womens",
       routeName: "womens",
@@ -204,7 +204,7 @@ const SHOP_INITIAL_STATE = {
         },
       ],
     },
-    {
+    mens: {
       id: uuidv4(),
       title: "Mens",
       routeName: "mens",
@@ -247,7 +247,7 @@ const SHOP_INITIAL_STATE = {
         },
       ],
     },
-  ],
+  },
 };
 
 export default SHOP_INITIAL_STATE;
