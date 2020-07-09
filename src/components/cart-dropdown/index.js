@@ -5,10 +5,10 @@ import { withRouter } from "react-router-dom";
 
 import {
   CartDropdownStyled,
+  GoToCheckoutButtonStyled,
   EmptyMessageStyled,
   CartItemsContainerStyled,
 } from "./styles";
-import CustomButton from "../custom-button";
 import CartItem from "../cart-item";
 import { selectCartItems } from "../../store/cart/cart.selectors";
 import { toggleCartHidden } from "../../store/cart/cart.actions";
@@ -24,14 +24,14 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
         <EmptyMessageStyled>Your cart is empty.</EmptyMessageStyled>
       )}
     </CartItemsContainerStyled>
-    <CustomButton
+    <GoToCheckoutButtonStyled
       onClick={() => {
         history.push("/checkout");
         dispatch(toggleCartHidden());
       }}
     >
       GO TO CHECKOUT
-    </CustomButton>
+    </GoToCheckoutButtonStyled>
   </CartDropdownStyled>
 );
 

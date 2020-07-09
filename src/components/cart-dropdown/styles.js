@@ -13,10 +13,10 @@ export const CartDropdownStyled = styled.div`
   top: 90px;
   right: 50px;
   z-index: 5;
+`;
 
-  ${CustomButton} {
-    margin-top: auto;
-  }
+export const GoToCheckoutButtonStyled = styled(CustomButton)`
+  margin-top: auto;
 `;
 
 export const EmptyMessageStyled = styled.span`
