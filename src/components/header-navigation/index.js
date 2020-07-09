@@ -7,7 +7,6 @@ import {
   LogoContainerStyled,
   OptionsContainerStyled,
   OptionLinkStyled,
-  OptionDivStyled,
 } from "./styles";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/utils";
@@ -24,9 +23,9 @@ const HeaderNavigation = ({ currentUser, hidden }) => (
     <OptionsContainerStyled>
       <OptionLinkStyled to="/shop">SHOP</OptionLinkStyled>
       {currentUser ? (
-        <OptionDivStyled onClick={() => auth.signOut()}>
+        <OptionLinkStyled as="div" onClick={() => auth.signOut()}>
           SIGN OUT
-        </OptionDivStyled>
+        </OptionLinkStyled>
       ) : (
         <OptionLinkStyled to="/auth">SIGN IN</OptionLinkStyled>
       )}

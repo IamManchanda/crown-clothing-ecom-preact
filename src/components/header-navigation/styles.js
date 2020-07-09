@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const HeaderNavigationStyled = styled.div`
@@ -23,15 +23,7 @@ export const OptionsContainerStyled = styled.div`
   justify-content: flex-end;
 `;
 
-const OptionStyled = css`
+export const OptionLinkStyled = styled(Link)`
   padding: 10px 15px;
   cursor: pointer;
-`;
-
-export const OptionLinkStyled = styled(Link)`
-  ${OptionStyled}
-`;
-
-export const OptionDivStyled = styled.div`
-  ${OptionStyled}
 `;
