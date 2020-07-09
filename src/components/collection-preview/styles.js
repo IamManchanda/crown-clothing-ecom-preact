@@ -6,7 +6,7 @@ export const CollectionPreviewStyled = styled.div`
   margin-bottom: 30px;
 `;
 
-export const TitleStyled = styled.div`
+export const TitleStyled = styled.h1`
   font-size: 28px;
   margin-bottom: 25px;
 `;

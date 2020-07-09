@@ -9,7 +9,7 @@ export const CheckoutPageStyled = styled.div`
   margin: 50px auto 0;
 
   .StripeCheckout {
-    margin: 0 0 30px auto;
+    margin: 0 0 40px auto;
   }
 `;
 
