@@ -1,14 +1,14 @@
 import React from "react";
 
-import "./styles.scss";
+import { AuthPageStyled } from "./styles";
 import SignIn from "../../components/sign-in";
 import SignUp from "../../components/sign-up";
 
 const AuthPage = () => (
-  <div className="auth-page">
+  <AuthPageStyled>
     <SignIn />
     <SignUp />
-  </div>
+  </AuthPageStyled>
 );
 
 export default AuthPage;

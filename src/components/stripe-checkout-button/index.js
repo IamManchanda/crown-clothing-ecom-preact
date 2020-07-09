@@ -1,8 +1,6 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 
-import "./styles.scss";
-
 const { REACT_APP_STRIPE_API_PUBLISHABLE_KEY: PUBLISHABLE_KEY } = process.env;
 
 const StripeCheckoutButton = ({ price }) => {
