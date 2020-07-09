@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Fragment, Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     const { props: { currentUser } = {} } = this;
     return (
-      <div>
+      <Fragment>
         <HeaderNavigation />
         <Switch>
           <Route exact path="/" component={HomePage} />
@@ -48,7 +48,7 @@ class App extends Component {
             render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
           />
         </Switch>
-      </div>
+      </Fragment>
     );
   }
 }

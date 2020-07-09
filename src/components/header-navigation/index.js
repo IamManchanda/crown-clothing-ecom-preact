@@ -8,7 +8,7 @@ import {
   OptionsContainerStyled,
   OptionLinkStyled,
 } from "./styles";
-import { ReactComponent as Logo } from "../../assets/crown.svg";
+import { ReactComponent as Logo } from "../../assets/svg/crown.svg";
 import { auth } from "../../firebase/utils";
 import CartIcon from "../cart-icon";
 import CartDropdown from "../cart-dropdown";
