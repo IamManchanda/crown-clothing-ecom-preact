@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./styles.scss";
+import { SignUpStyled, TitleStyled } from "./styles";
 import FormInput from "../form-input";
 import CustomButton from "../custom-button";
 import { auth, createUserProfileDocument } from "../../firebase/utils";
@@ -42,10 +42,10 @@ class SignUp extends Component {
       methods: { handleFormSubmit, handleFormInputChange } = {},
     } = this;
     return (
-      <div className="sign-up">
-        <h2 className="title">I do not have an account.</h2>
+      <SignUpStyled>
+        <TitleStyled>I do not have an account.</TitleStyled>
         <span>Sign up with your name, email and password.</span>
-        <form className="sign-up-form" onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit}>
           <FormInput
             label="Your Name"
             name="displayName"
@@ -80,7 +80,7 @@ class SignUp extends Component {
           />
           <CustomButton type="submit">Sign Up</CustomButton>
         </form>
-      </div>
+      </SignUpStyled>
     );
   }
 }
