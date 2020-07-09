@@ -20,6 +20,7 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
     "reselect": "^4.0.0",
+    "styled-components": "^5.1.1",
     "uuid": "^8.2.0"
   },
   "scripts": {
