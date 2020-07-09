@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-const GlobalStyles = styled.createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
-    font-family: "Open Sans Condensed", sans-serif;
+    font-family: "Open Sans Condensed",
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     padding: 20px 60px;
