@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./styles.scss";
+import { SignInStyled, TitleStyled, ButtonGroupStyled } from "./styles";
 import FormInput from "../form-input";
 import CustomButton from "../custom-button";
 import { auth, signInWithGoogle } from "../../firebase/utils";
@@ -32,10 +32,10 @@ class SignIn extends Component {
       methods: { handleFormSubmit, handleFormInputChange } = {},
     } = this;
     return (
-      <div className="sign-in">
-        <h2 className="title">I already have an account.</h2>
+      <SignInStyled>
+        <TitleStyled>I already have an account.</TitleStyled>
         <span>Sign in with your email and password.</span>
-        <form className="sign-in-form" onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit}>
           <FormInput
             label="Email"
             name="email"
@@ -52,14 +52,14 @@ class SignIn extends Component {
             onChange={handleFormInputChange}
             required
           />
-          <div className="button-group">
+          <ButtonGroupStyled>
             <CustomButton type="submit">Sign In</CustomButton>
             <CustomButton onClick={signInWithGoogle} googleSignIn>
               Sign In with Google
             </CustomButton>
-          </div>
+          </ButtonGroupStyled>
         </form>
-      </div>
+      </SignInStyled>
     );
   }
 }
