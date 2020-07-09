@@ -1,19 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import "./styles.scss";
+import {
+  ShopPageCollectionStyled,
+  TitleStyled,
+  CollectionItemsContainerStyled,
+  CollectionItemWrapperStyled,
+} from "./styles";
 import CollectionItem from "../../../components/collection-item";
 import { selectShopCollection } from "../../../store/shop/shop.selectors";
 
 const ShopPageCollection = ({ collection: { title, items } = {} }) => (
-  <div className="shop-page-collection">
-    <h2 className="title">{title}</h2>
-    <div className="items">
+  <ShopPageCollectionStyled>
+    <TitleStyled>{title}</TitleStyled>
+    <CollectionItemsContainerStyled>
       {items.map((item) => (
-        <CollectionItem key={item.id} item={item} />
+        <CollectionItemWrapperStyled>
+          <CollectionItem key={item.id} item={item} />
+        </CollectionItemWrapperStyled>
       ))}
-    </div>
-  </div>
+    </CollectionItemsContainerStyled>
+  </ShopPageCollectionStyled>
 );
 
 const mapStateToProps = (state, ownProps) => ({
