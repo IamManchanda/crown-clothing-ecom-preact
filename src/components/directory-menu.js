@@ -2,9 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import { DirectoryMenuStyled } from "./styles";
-import { selectDirectorySections } from "../../store/directory/directory.selectors";
-import MenuItem from "../menu-item";
+import styled from "styled-components";
+
+import { selectDirectorySections } from "../store/directory/directory.selectors";
+import MenuItem from "./menu-item";
+
+const DirectoryMenuStyled = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
 
 const DirectoryMenu = ({ sections }) => (
   <DirectoryMenuStyled>
