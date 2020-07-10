@@ -32,8 +32,8 @@ const ShopPageCollection = ({ collection: { title, items } = {} }) => (
     <TitleStyled>{title}</TitleStyled>
     <CollectionItemsContainerStyled>
       {items.map((item) => (
-        <CollectionItemWrapperStyled>
-          <CollectionItem key={item.id} item={item} />
+        <CollectionItemWrapperStyled key={item.id}>
+          <CollectionItem item={item} />
         </CollectionItemWrapperStyled>
       ))}
     </CollectionItemsContainerStyled>
