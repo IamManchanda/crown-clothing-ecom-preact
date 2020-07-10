@@ -1,6 +1,7 @@
+import React from "react";
 import styled, { css } from "styled-components";
 
-export const CustomButtonStyled = styled.button`
+const CustomButtonStyled = styled.button`
   min-width: 165px;
   width: auto;
   height: 50px;
@@ -57,3 +58,9 @@ export const CustomButtonStyled = styled.button`
     `;
   }}
 `;
+
+const CustomButton = ({ children, ...otherProps }) => (
+  <CustomButtonStyled {...otherProps}>{children}</CustomButtonStyled>
+);
+
+export default CustomButton;
