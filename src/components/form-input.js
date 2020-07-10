@@ -1,3 +1,4 @@
+import React from "react";
 import styled, { css } from "styled-components";
 
 const subColor = "grey";
@@ -9,7 +10,7 @@ const shrinkLabelStyled = css`
   color: ${mainColor};
 `;
 
-export const FormInputGroupStyled = styled.div`
+const FormInputGroupStyled = styled.div`
   position: relative;
   margin: 45px 0;
 
@@ -18,7 +19,7 @@ export const FormInputGroupStyled = styled.div`
   }
 `;
 
-export const FormInputLabelStyled = styled.label`
+const FormInputLabelStyled = styled.label`
   color: ${subColor};
   font-size: 16px;
   font-weight: normal;
@@ -33,7 +34,7 @@ export const FormInputLabelStyled = styled.label`
   }
 `;
 
-export const FormInputStyled = styled.input`
+const FormInputStyled = styled.input`
   background: none;
   background-color: white;
   color: ${subColor};
@@ -54,3 +55,20 @@ export const FormInputStyled = styled.input`
     ${shrinkLabelStyled}
   }
 `;
+
+const FormInput = ({ label, onChange, ...otherProps }) => (
+  <FormInputGroupStyled>
+    <FormInputStyled
+      className="form-input"
+      onChange={onChange}
+      {...otherProps}
+    />
+    {label && (
+      <FormInputLabelStyled shrink={otherProps.value.length}>
+        {label}
+      </FormInputLabelStyled>
+    )}
+  </FormInputGroupStyled>
+);
+
+export default FormInput;
