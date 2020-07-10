@@ -1,6 +1,9 @@
+import React from "react";
+import { withRouter } from "react-router-dom";
+
 import styled from "styled-components";
 
-export const BackgroundImageStyled = styled.div`
+const BackgroundImageStyled = styled.div`
   width: 100%;
   height: 100%;
   background-position: center;
@@ -8,7 +11,7 @@ export const BackgroundImageStyled = styled.div`
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
 
-export const ContentStyled = styled.div`
+const ContentStyled = styled.div`
   height: 90px;
   padding: 0 25px;
   display: flex;
@@ -21,7 +24,7 @@ export const ContentStyled = styled.div`
   position: absolute;
 `;
 
-export const MenuItemStyled = styled.div`
+const MenuItemStyled = styled.div`
   min-width: 30%;
   flex: 1 1 auto;
   display: flex;
@@ -58,14 +61,29 @@ export const MenuItemStyled = styled.div`
   }
 `;
 
-export const TitleStyled = styled.h1`
+const TitleStyled = styled.h1`
   font-weight: bold;
   margin-bottom: 6px;
   font-size: 22px;
   color: #4a4a4a;
 `;
 
-export const SubtitleStyled = styled.span`
+const SubtitleStyled = styled.span`
   font-weight: lighter;
   font-size: 16px;
 `;
+
+const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
+  <MenuItemStyled
+    large={size === "large"}
+    onClick={() => history.push(`${match.url}${linkUrl}`)}
+  >
+    <BackgroundImageStyled imageUrl={imageUrl} />
+    <ContentStyled>
+      <TitleStyled>{title.toUpperCase()}</TitleStyled>
+      <SubtitleStyled>SHOP NOW</SubtitleStyled>
+    </ContentStyled>
+  </MenuItemStyled>
+);
+
+export default withRouter(MenuItem);
