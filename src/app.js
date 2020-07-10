@@ -8,9 +8,9 @@ import ShopPage from "./pages/shop";
 import AuthPage from "./pages/auth";
 import CheckoutPage from "./pages/checkout";
 import HeaderNavigation from "./components/header-navigation";
-import { auth, createUserProfileDocument } from "./firebase/utils";
 import { setCurrentUser } from "./store/user/user.actions";
 import { selectCurrentUser } from "./store/user/user.selectors";
+import { auth, createUserProfileDocument } from "./firebase/utils";
 
 class App extends Component {
   componentDidMount() {
