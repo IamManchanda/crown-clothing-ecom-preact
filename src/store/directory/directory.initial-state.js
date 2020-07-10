@@ -4,32 +4,32 @@ const DIRECTORY_INITIAL_STATE = {
   sections: [
     {
       id: uuidv4(),
-      title: "hats",
+      title: "Hats",
       imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
       linkUrl: "shop/hats",
     },
     {
       id: uuidv4(),
-      title: "sneakers",
+      title: "Sneakers",
       imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
       linkUrl: "shop/sneakers",
     },
     {
       id: uuidv4(),
-      title: "jackets",
+      title: "Jackets",
       imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
       linkUrl: "shop/jackets",
     },
     {
       id: uuidv4(),
-      title: "womens",
+      title: "Womens",
       imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
       size: "large",
       linkUrl: "shop/womens",
     },
     {
       id: uuidv4(),
-      title: "mens",
+      title: "Mens",
       imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
       size: "large",
       linkUrl: "shop/mens",
