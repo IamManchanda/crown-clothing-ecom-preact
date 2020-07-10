@@ -1,10 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import styled from "styled-components";
 
-import { CollectionsOverviewStyled } from "./styles";
-import CollectionPreview from "../collection-preview";
-import { selectShopCollectionsForPreview } from "../../store/shop/shop.selectors";
+import CollectionPreview from "./collection-preview";
+import { selectShopCollectionsForPreview } from "../store/shop/shop.selectors";
+
+const CollectionsOverviewStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const CollectionsOverview = ({ collections }) => (
   <CollectionsOverviewStyled>

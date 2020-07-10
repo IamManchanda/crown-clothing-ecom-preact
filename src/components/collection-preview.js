@@ -1,14 +1,31 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import styled from "styled-components";
 
-import {
-  CollectionPreviewStyled,
-  TitleStyled,
-  PreviewStyled,
-  FooterStyled,
-} from "./styles";
-import CollectionItem from "../collection-item";
-import CustomButton from "../custom-button";
+import CollectionItem from "./collection-item";
+import CustomButton from "./custom-button";
+
+const CollectionPreviewStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+`;
+
+const TitleStyled = styled.h1`
+  font-size: 28px;
+  margin-bottom: 25px;
+`;
+
+const PreviewStyled = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const FooterStyled = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+`;
 
 const CollectionPreview = ({ title, items, routeName, history }) => (
   <CollectionPreviewStyled>
