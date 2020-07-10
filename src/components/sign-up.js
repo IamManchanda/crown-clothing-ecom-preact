@@ -1,10 +1,20 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 
-import { SignUpStyled, TitleStyled } from "./styles";
-import FormInput from "../form-input";
-import CustomButton from "../custom-button";
-import { auth, createUserProfileDocument } from "../../firebase/utils";
-import { EMPTY_SIGN_UP_STATE } from "../../constants/empty-auth-state";
+import FormInput from "./form-input";
+import CustomButton from "./custom-button";
+import { auth, createUserProfileDocument } from "../firebase/utils";
+import { EMPTY_SIGN_UP_STATE } from "../constants/empty-auth-state";
+
+const SignUpStyled = styled.div`
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const TitleStyled = styled.h2`
+  margin: 10px 0;
+`;
 
 class SignUp extends Component {
   state = { ...EMPTY_SIGN_UP_STATE };
