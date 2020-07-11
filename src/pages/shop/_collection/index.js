@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import CollectionItem from "../../components/collection-item";
-import { selectShopCollection } from "../../store/shop/shop.selectors";
+import CollectionItem from "../../../components/collection-item";
+import { selectShopCollection } from "../../../store/shop/shop.selectors";
 
 const ShopPageCollectionStyled = styled.div`
   display: flex;
