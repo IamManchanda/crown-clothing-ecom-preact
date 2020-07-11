@@ -1,6 +1,6 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import CollectionItem from "./collection-item";
 import CustomButton from "./custom-button";
@@ -27,7 +27,7 @@ const FooterStyled = styled.div`
   margin-top: 25px;
 `;
 
-const CollectionPreview = ({ title, items, routeName, history }) => (
+const CollectionPreview = ({ title, items, routeName }) => (
   <CollectionPreviewStyled>
     <TitleStyled>{title.toUpperCase()}</TitleStyled>
     <PreviewStyled>
@@ -38,11 +38,11 @@ const CollectionPreview = ({ title, items, routeName, history }) => (
         ))}
     </PreviewStyled>
     <FooterStyled>
-      <CustomButton onClick={() => history.push(`/shop/${routeName}`)}>
-        Visit {title.toUpperCase()} Category
-      </CustomButton>
+      <Link to={`/shop/${routeName}`}>
+        <CustomButton>Visit {title.toUpperCase()} Category</CustomButton>
+      </Link>
     </FooterStyled>
   </CollectionPreviewStyled>
 );
 
-export default withRouter(CollectionPreview);
+export default CollectionPreview;

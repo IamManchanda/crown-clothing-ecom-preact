@@ -1,6 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 const BackgroundImageStyled = styled.div`
@@ -24,7 +23,7 @@ const ContentStyled = styled.div`
   position: absolute;
 `;
 
-const MenuItemStyled = styled.div`
+const MenuItemLinkStyled = styled(Link)`
   min-width: 30%;
   flex: 1 1 auto;
   display: flex;
@@ -55,10 +54,6 @@ const MenuItemStyled = styled.div`
   &:last-child {
     margin-left: 7.5px;
   }
-
-  &.large {
-    height: 380px;
-  }
 `;
 
 const TitleStyled = styled.h1`
@@ -73,17 +68,17 @@ const SubtitleStyled = styled.span`
   font-size: 16px;
 `;
 
-const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
-  <MenuItemStyled
-    large={size === "large"}
-    onClick={() => history.push(`${match.url}${linkUrl}`)}
+const MenuItem = ({ title, imageUrl, size, linkUrl, match }) => (
+  <MenuItemLinkStyled
+    large={size === "large" ? 1 : 0}
+    to={`${match.url}${linkUrl}`}
   >
     <BackgroundImageStyled imageUrl={imageUrl} />
     <ContentStyled>
       <TitleStyled>{title.toUpperCase()}</TitleStyled>
       <SubtitleStyled>SHOP NOW</SubtitleStyled>
     </ContentStyled>
-  </MenuItemStyled>
+  </MenuItemLinkStyled>
 );
 
 export default withRouter(MenuItem);
