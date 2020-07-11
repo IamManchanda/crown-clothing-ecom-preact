@@ -15,6 +15,15 @@
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
+  <script>
+    if ("%NODE_ENV%" === "development") {
+      console.log("Welcome, Developer to the Browser Console...\nThis is the Development environment of our App.");
+    } else {
+      if (typeof window.__REACT_DEVTOOLS_GLOBAL_HOOK__ === 'object') {
+        __REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () {};
+      }
+    }
+  </script>
   <div id="root"></div>
 </body>
 
