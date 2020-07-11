@@ -10,7 +10,9 @@ const middlewares = [
   ...(process.env.NODE_ENV === "development" ? [logger] : []),
 ];
 const composeEnhancers =
-  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  process.env.NODE_ENV === "development" &&
+  typeof window === "object" &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
         name: "Redux Store: Crown Clothing",
       })
