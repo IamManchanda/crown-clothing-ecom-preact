@@ -7,9 +7,9 @@ import { fetchCollectionsStartAsync } from "../../store/shop/shop.actions";
 import { selectShopCollectionsIsLoaded } from "../../store/shop/shop.selectors";
 import withSpinner from "../../components/with-spinner";
 import CollectionsOverviewWithContainer from "../../components/collections-overview/with-container";
-import ShopPageCollection from "./_collection";
+import CollectionPage from "../../components/collection-page";
 
-const ShopPageCollectionWithSpinner = withSpinner(ShopPageCollection);
+const CollectionPageWithSpinner = withSpinner(CollectionPage);
 
 class ShopPage extends Component {
   componentDidMount() {
@@ -29,7 +29,7 @@ class ShopPage extends Component {
         <Route
           path={`${match.path}/:collection`}
           render={(props) => (
-            <ShopPageCollectionWithSpinner isLoading={!isLoaded} {...props} />
+            <CollectionPageWithSpinner isLoading={!isLoaded} {...props} />
           )}
         />
       </Fragment>

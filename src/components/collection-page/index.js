@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import CollectionItem from "../../../components/collection-item";
-import { selectShopCollection } from "../../../store/shop/shop.selectors";
+import CollectionItem from "../collection-item";
+import { selectShopCollection } from "../../store/shop/shop.selectors";
 
-const ShopPageCollectionStyled = styled.div`
+const CollectionPageStyled = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -26,8 +26,8 @@ const CollectionItemWrapperStyled = styled.div`
   margin-bottom: 40px;
 `;
 
-const ShopPageCollection = ({ collection: { title, items } = {} }) => (
-  <ShopPageCollectionStyled>
+const CollectionPage = ({ collection: { title, items } = {} }) => (
+  <CollectionPageStyled>
     <TitleStyled>{title}</TitleStyled>
     <CollectionItemsContainerStyled>
       {items.map((item) => (
@@ -36,10 +36,10 @@ const ShopPageCollection = ({ collection: { title, items } = {} }) => (
         </CollectionItemWrapperStyled>
       ))}
     </CollectionItemsContainerStyled>
-  </ShopPageCollectionStyled>
+  </CollectionPageStyled>
 );
 
 const mapStateToProps = (state, ownProps) => ({
   collection: selectShopCollection(ownProps.match.params.collection)(state),
 });
-export default connect(mapStateToProps)(ShopPageCollection);
+export default connect(mapStateToProps)(CollectionPage);
