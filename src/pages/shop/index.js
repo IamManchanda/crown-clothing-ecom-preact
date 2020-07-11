@@ -8,7 +8,7 @@ import {
   selectShopCollectionIsFetching,
   selectShopCollectionsIsLoaded,
 } from "../../store/shop/shop.selectors";
-import withSpinner from "../../components/hoc/with-spinner";
+import withSpinner from "../../components/with-spinner";
 import CollectionsOverview from "../../components/collections-overview";
 import ShopPageCollection from "./_collection";
 
