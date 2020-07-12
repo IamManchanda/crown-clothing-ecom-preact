@@ -47,12 +47,12 @@ const FormInputStyled = styled.input`
   border-bottom: 1px solid ${subColor};
   margin: 25px 0;
 
-  &:focus {
+  &:focus,
+  &:not([value=""]) {
     outline: none;
-  }
-
-  &:focus ~ ${FormInputLabelStyled} {
-    ${shrinkLabelStyled}
+    ~ ${FormInputLabelStyled} {
+      ${shrinkLabelStyled}
+    }
   }
 `;
 
