@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Fragment, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -11,31 +11,26 @@ import HeaderNavigation from "./components/header-navigation";
 import { selectCurrentUser } from "./store/user/user.selectors";
 import { checkUserSession } from "./store/user/user.actions";
 
-class App extends Component {
-  componentDidMount() {
-    const { props: { checkUserSession } = {} } = this;
+const App = ({ currentUser, checkUserSession }) => {
+  useEffect(() => {
     checkUserSession();
-  }
-
-  render() {
-    const { props: { currentUser } = {} } = this;
-    return (
-      <Fragment>
-        <HeaderNavigation />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/shop" component={ShopPage} />
-          <Route exact path="/checkout" component={CheckoutPage} />
-          <Route
-            exact
-            path="/auth"
-            render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
-          />
-        </Switch>
-      </Fragment>
-    );
-  }
-}
+  }, [checkUserSession]);
+  return (
+    <Fragment>
+      <HeaderNavigation />
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/shop" component={ShopPage} />
+        <Route exact path="/checkout" component={CheckoutPage} />
+        <Route
+          exact
+          path="/auth"
+          render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
+        />
+      </Switch>
+    </Fragment>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
