@@ -65,7 +65,7 @@ class SignUp extends Component {
             required
           />
           <FormInput
-            label="Email"
+            label="Your Email"
             name="email"
             type="email"
             value={email}
@@ -73,7 +73,7 @@ class SignUp extends Component {
             required
           />
           <FormInput
-            label="Password"
+            label="Your Password"
             name="password"
             type="password"
             value={password}

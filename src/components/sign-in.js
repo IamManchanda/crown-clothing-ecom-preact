@@ -55,7 +55,7 @@ class SignIn extends Component {
         <span>Sign in with your email and password.</span>
         <form onSubmit={handleFormSubmit}>
           <FormInput
-            label="Email"
+            label="Your Email"
             name="email"
             type="email"
             value={email}
@@ -63,7 +63,7 @@ class SignIn extends Component {
             required
           />
           <FormInput
-            label="Password"
+            label="Your Password"
             name="password"
             type="password"
             value={password}
