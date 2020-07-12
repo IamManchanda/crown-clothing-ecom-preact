@@ -8,29 +8,13 @@ import ShopPage from "./pages/shop";
 import AuthPage from "./pages/auth";
 import CheckoutPage from "./pages/checkout";
 import HeaderNavigation from "./components/header-navigation";
-import { setCurrentUser } from "./store/user/user.actions";
 import { selectCurrentUser } from "./store/user/user.selectors";
-/* import { auth, createUserProfileDocument } from "./firebase/utils"; */
+import { checkUserSession } from "./store/user/user.actions";
 
 class App extends Component {
   componentDidMount() {
-    /* const { props: { setCurrentUser } = {} } = this; */
-    /* this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot((snapshot) => {
-          setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data(),
-          });
-        });
-      }
-      setCurrentUser(userAuth);
-    }); */
-  }
-
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
+    const { props: { checkUserSession } = {} } = this;
+    checkUserSession();
   }
 
   render() {
@@ -57,6 +41,6 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 });
 const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+  checkUserSession: () => dispatch(checkUserSession()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);

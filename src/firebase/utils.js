@@ -57,6 +57,7 @@ export const addCollectionAndDocuments = async (
   });
   return await batch.commit();
 };
+
 export const convertCollectionsSnapshotsToMap = (collections) => {
   const transformedCollection = collections.docs.map((doc) => {
     const { title, items } = doc.data();
@@ -72,6 +73,14 @@ export const convertCollectionsSnapshotsToMap = (collections) => {
     return accumulator;
   }, {});
 };
+
+export const getCurrentUser = () =>
+  new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
 
 firebase.initializeApp(config);
 export const auth = firebase.auth();
