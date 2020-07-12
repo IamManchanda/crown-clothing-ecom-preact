@@ -10,7 +10,7 @@ import {
   fetchCollectionsFailure,
 } from "./shop.actions";
 
-export function* fetchCollectionsAsync() {
+function* fetchCollectionsAsync() {
   try {
     const collectionRef = firestore.collection("collections");
     const snapshot = yield collectionRef.get();
@@ -24,7 +24,7 @@ export function* fetchCollectionsAsync() {
   }
 }
 
-export function* fetchCollectionsStart() {
+function* fetchCollectionsStart() {
   yield takeLatest(FETCH_COLLECTIONS_START, fetchCollectionsAsync);
 }
 

@@ -19,7 +19,7 @@ import {
   signOutFailure,
 } from "./user.actions";
 
-export function* getSnapshotFromUserAuth(userAuth) {
+function* getSnapshotFromUserAuth(userAuth) {
   try {
     const userRef = yield call(createUserProfileDocument, userAuth);
     const userSnapshot = yield userRef.get();
@@ -34,7 +34,7 @@ export function* getSnapshotFromUserAuth(userAuth) {
   }
 }
 
-export function* googleSignInStartAsync() {
+function* googleSignInStartAsync() {
   try {
     const { user } = yield auth.signInWithPopup(googleProvider);
     yield getSnapshotFromUserAuth(user);
@@ -43,11 +43,11 @@ export function* googleSignInStartAsync() {
   }
 }
 
-export function* googleSignInStart() {
+function* googleSignInStart() {
   yield takeLatest(GOOGLE_SIGN_IN_START, googleSignInStartAsync);
 }
 
-export function* emailSignInStartAsync({ payload: { email, password } = {} }) {
+function* emailSignInStartAsync({ payload: { email, password } = {} }) {
   try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
     yield getSnapshotFromUserAuth(user);
@@ -56,11 +56,11 @@ export function* emailSignInStartAsync({ payload: { email, password } = {} }) {
   }
 }
 
-export function* emailSignInStart() {
+function* emailSignInStart() {
   yield takeLatest(EMAIL_SIGN_IN_START, emailSignInStartAsync);
 }
 
-export function* checkUserSessionAsync() {
+function* checkUserSessionAsync() {
   try {
     const userAuth = yield getCurrentUser();
     if (!userAuth) return;
@@ -70,11 +70,11 @@ export function* checkUserSessionAsync() {
   }
 }
 
-export function* checkUserSession() {
+function* checkUserSession() {
   yield takeLatest(CHECK_USER_SESSION, checkUserSessionAsync);
 }
 
-export function* signOutStartAsync() {
+function* signOutStartAsync() {
   try {
     yield auth.signOut();
     yield put(signOutSuccess());
@@ -83,7 +83,7 @@ export function* signOutStartAsync() {
   }
 }
 
-export function* signOutStart() {
+function* signOutStart() {
   yield takeLatest(SIGN_OUT_START, signOutStartAsync);
 }
 
