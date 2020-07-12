@@ -5,15 +5,12 @@ import {
   googleProvider,
   createUserProfileDocument,
 } from "../../firebase/utils";
-import {
-  GOOGLE_SIGN_IN_START,
-  /* EMAIL_SIGN_IN_START, */
-} from "./user.types";
+import { GOOGLE_SIGN_IN_START, EMAIL_SIGN_IN_START } from "./user.types";
 import {
   googleSignInSuccess,
   googleSignInFailure,
-  /* emailSignInSuccess,
-  emailSignInFailure, */
+  emailSignInSuccess,
+  emailSignInFailure,
 } from "./user.actions";
 
 export function* googleSignInStartAsync() {
@@ -36,6 +33,26 @@ export function* googleSignInStart() {
   yield takeLatest(GOOGLE_SIGN_IN_START, googleSignInStartAsync);
 }
 
+export function* emailSignInStartAsync({ payload: { email, password } = {} }) {
+  try {
+    const { user } = yield auth.signInWithEmailAndPassword(email, password);
+    const userRef = yield call(createUserProfileDocument, user);
+    const userSnapshot = yield userRef.get();
+    yield put(
+      emailSignInSuccess({
+        id: userSnapshot.id,
+        ...userSnapshot.data(),
+      }),
+    );
+  } catch (error) {
+    yield put(emailSignInFailure(error));
+  }
+}
+
+export function* emailSignInStart() {
+  yield takeLatest(EMAIL_SIGN_IN_START, emailSignInStartAsync);
+}
+
 export default function* userSagas() {
-  yield all([call(googleSignInStart)]);
+  yield all([call(googleSignInStart), call(emailSignInStart)]);
 }

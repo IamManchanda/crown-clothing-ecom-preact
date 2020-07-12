@@ -4,8 +4,10 @@ import styled from "styled-components";
 
 import FormInput from "./form-input";
 import CustomButton from "./custom-button";
-import { auth } from "../firebase/utils";
-import { googleSignInStart } from "../store/user/user.actions";
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from "../store/user/user.actions";
 import { EMPTY_SIGN_IN_STATE } from "../constants/empty-auth-state";
 
 const SignInStyled = styled.div`
@@ -29,13 +31,11 @@ class SignIn extends Component {
   methods = {
     handleFormSubmit: async (event) => {
       event.preventDefault();
-      const { state: { email, password } = {} } = this;
-      try {
-        await auth.signInWithEmailAndPassword(email, password);
-        this.setState({ ...EMPTY_SIGN_IN_STATE });
-      } catch (error) {
-        console.error(error);
-      }
+      const {
+        state: { email, password } = {},
+        props: { emailSignInStart } = {},
+      } = this;
+      emailSignInStart(email, password);
     },
     handleFormInputChange: (event) => {
       const { value, name } = event.target;
@@ -89,5 +89,7 @@ class SignIn extends Component {
 const mapStateToProps = null;
 const mapDispatchToProps = (dispatch) => ({
   googleSignInStart: () => dispatch(googleSignInStart()),
+  emailSignInStart: (email, password) =>
+    dispatch(emailSignInStart({ email, password })),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
