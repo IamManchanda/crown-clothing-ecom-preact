@@ -5,11 +5,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../assets/svg/crown.svg";
-import { auth } from "../firebase/utils";
 import CartIcon from "./cart-icon";
 import CartDropdown from "./cart-dropdown";
-import { selectCurrentUser } from "../store/user/user.selectors";
 import { selectCartHidden } from "../store/cart/cart.selectors";
+import { selectCurrentUser } from "../store/user/user.selectors";
+import { signOutStart } from "../store/user/user.actions";
 
 const HeaderNavigationStyled = styled.div`
   height: 70px;
@@ -38,7 +38,7 @@ const OptionLinkStyled = styled(Link)`
   cursor: pointer;
 `;
 
-const HeaderNavigation = ({ currentUser, hidden }) => (
+const HeaderNavigation = ({ currentUser, hidden, signOutStart }) => (
   <HeaderNavigationStyled>
     <LogoContainerStyled to="/">
       <Logo className="logo" />
@@ -46,7 +46,7 @@ const HeaderNavigation = ({ currentUser, hidden }) => (
     <OptionsContainerStyled>
       <OptionLinkStyled to="/shop">SHOP</OptionLinkStyled>
       {currentUser ? (
-        <OptionLinkStyled as="div" onClick={() => auth.signOut()}>
+        <OptionLinkStyled as="div" onClick={signOutStart}>
           SIGN OUT
         </OptionLinkStyled>
       ) : (
@@ -62,4 +62,7 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
   hidden: selectCartHidden,
 });
-export default connect(mapStateToProps)(HeaderNavigation);
+const mapDispatchToProps = (dispatch) => ({
+  signOutStart: () => dispatch(signOutStart()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderNavigation);

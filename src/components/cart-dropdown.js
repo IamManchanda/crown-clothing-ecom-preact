@@ -43,7 +43,7 @@ const CartItemsContainerStyled = styled.div`
   overflow: scroll;
 `;
 
-const CartDropdown = ({ cartItems, history, dispatch }) => (
+const CartDropdown = ({ cartItems, dispatch }) => (
   <CartDropdownStyled>
     <CartItemsContainerStyled>
       {cartItems.length ? (

@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 
 import FormInput from "./form-input";
 import CustomButton from "./custom-button";
-import { auth, signInWithGoogle } from "../firebase/utils";
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from "../store/user/user.actions";
 import { EMPTY_SIGN_IN_STATE } from "../constants/empty-auth-state";
 
 const SignInStyled = styled.div`
@@ -27,13 +31,11 @@ class SignIn extends Component {
   methods = {
     handleFormSubmit: async (event) => {
       event.preventDefault();
-      const { state: { email, password } = {} } = this;
-      try {
-        await auth.signInWithEmailAndPassword(email, password);
-        this.setState({ ...EMPTY_SIGN_IN_STATE });
-      } catch (error) {
-        console.error(error);
-      }
+      const {
+        state: { email, password } = {},
+        props: { emailSignInStart } = {},
+      } = this;
+      emailSignInStart(email, password);
     },
     handleFormInputChange: (event) => {
       const { value, name } = event.target;
@@ -45,6 +47,7 @@ class SignIn extends Component {
     const {
       state: { email, password } = {},
       methods: { handleFormSubmit, handleFormInputChange } = {},
+      props: { googleSignInStart } = {},
     } = this;
     return (
       <SignInStyled>
@@ -52,7 +55,7 @@ class SignIn extends Component {
         <span>Sign in with your email and password.</span>
         <form onSubmit={handleFormSubmit}>
           <FormInput
-            label="Email"
+            label="Your Email"
             name="email"
             type="email"
             value={email}
@@ -60,7 +63,7 @@ class SignIn extends Component {
             required
           />
           <FormInput
-            label="Password"
+            label="Your Password"
             name="password"
             type="password"
             value={password}
@@ -69,7 +72,11 @@ class SignIn extends Component {
           />
           <ButtonGroupStyled>
             <CustomButton type="submit">Sign In</CustomButton>
-            <CustomButton onClick={signInWithGoogle} googleSignIn>
+            <CustomButton
+              type="button"
+              onClick={googleSignInStart}
+              googleSignIn
+            >
               Sign In with Google
             </CustomButton>
           </ButtonGroupStyled>
@@ -79,4 +86,10 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+const mapStateToProps = null;
+const mapDispatchToProps = (dispatch) => ({
+  googleSignInStart: () => dispatch(googleSignInStart()),
+  emailSignInStart: (email, password) =>
+    dispatch(emailSignInStart({ email, password })),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
