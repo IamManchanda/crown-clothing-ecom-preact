@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 import CustomButton from "./custom-button";
@@ -12,7 +12,7 @@ import { toggleCartHidden } from "../store/cart/cart.actions";
 const CartDropdownStyled = styled.div`
   position: absolute;
   width: 240px;
-  height: 340px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -24,7 +24,11 @@ const CartDropdownStyled = styled.div`
 `;
 
 const GoToCheckoutButtonStyled = styled(CustomButton)`
-  margin-top: auto;
+  margin-top: 15px;
+`;
+
+const LinkStyled = styled(Link)`
+  margin: 0 auto;
 `;
 
 const EmptyMessageStyled = styled.span`
@@ -50,14 +54,9 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
         <EmptyMessageStyled>Your cart is empty.</EmptyMessageStyled>
       )}
     </CartItemsContainerStyled>
-    <GoToCheckoutButtonStyled
-      onClick={() => {
-        history.push("/checkout");
-        dispatch(toggleCartHidden());
-      }}
-    >
-      GO TO CHECKOUT
-    </GoToCheckoutButtonStyled>
+    <LinkStyled to="/checkout" onClick={() => dispatch(toggleCartHidden())}>
+      <GoToCheckoutButtonStyled>GO TO CHECKOUT</GoToCheckoutButtonStyled>
+    </LinkStyled>
   </CartDropdownStyled>
 );
 
