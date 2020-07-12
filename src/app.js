@@ -10,12 +10,12 @@ import CheckoutPage from "./pages/checkout";
 import HeaderNavigation from "./components/header-navigation";
 import { setCurrentUser } from "./store/user/user.actions";
 import { selectCurrentUser } from "./store/user/user.selectors";
-import { auth, createUserProfileDocument } from "./firebase/utils";
+/* import { auth, createUserProfileDocument } from "./firebase/utils"; */
 
 class App extends Component {
   componentDidMount() {
-    const { props: { setCurrentUser } = {} } = this;
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    /* const { props: { setCurrentUser } = {} } = this; */
+    /* this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot((snapshot) => {
@@ -26,7 +26,7 @@ class App extends Component {
         });
       }
       setCurrentUser(userAuth);
-    });
+    }); */
   }
 
   componentWillUnmount() {

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 
 import FormInput from "./form-input";
 import CustomButton from "./custom-button";
-import { auth, signInWithGoogle } from "../firebase/utils";
+import { auth } from "../firebase/utils";
+import { googleSignInStart } from "../store/user/user.actions";
 import { EMPTY_SIGN_IN_STATE } from "../constants/empty-auth-state";
 
 const SignInStyled = styled.div`
@@ -45,6 +47,7 @@ class SignIn extends Component {
     const {
       state: { email, password } = {},
       methods: { handleFormSubmit, handleFormInputChange } = {},
+      props: { googleSignInStart } = {},
     } = this;
     return (
       <SignInStyled>
@@ -69,7 +72,11 @@ class SignIn extends Component {
           />
           <ButtonGroupStyled>
             <CustomButton type="submit">Sign In</CustomButton>
-            <CustomButton onClick={signInWithGoogle} googleSignIn>
+            <CustomButton
+              type="button"
+              onClick={googleSignInStart}
+              googleSignIn
+            >
               Sign In with Google
             </CustomButton>
           </ButtonGroupStyled>
@@ -79,4 +86,8 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+const mapStateToProps = null;
+const mapDispatchToProps = (dispatch) => ({
+  googleSignInStart: () => dispatch(googleSignInStart()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
