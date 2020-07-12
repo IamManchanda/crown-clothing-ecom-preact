@@ -10,8 +10,14 @@ import {
   GOOGLE_SIGN_IN_START,
   EMAIL_SIGN_IN_START,
   CHECK_USER_SESSION,
+  SIGN_OUT_START,
 } from "./user.types";
-import { signInSuccess, signInFailure } from "./user.actions";
+import {
+  signInSuccess,
+  signInFailure,
+  signOutSuccess,
+  signOutFailure,
+} from "./user.actions";
 
 export function* getSnapshotFromUserAuth(userAuth) {
   try {
@@ -54,7 +60,7 @@ export function* emailSignInStart() {
   yield takeLatest(EMAIL_SIGN_IN_START, emailSignInStartAsync);
 }
 
-export function* isUserAuthenticated() {
+export function* checkUserSessionAsync() {
   try {
     const userAuth = yield getCurrentUser();
     if (!userAuth) return;
@@ -65,7 +71,20 @@ export function* isUserAuthenticated() {
 }
 
 export function* checkUserSession() {
-  yield takeLatest(CHECK_USER_SESSION, isUserAuthenticated);
+  yield takeLatest(CHECK_USER_SESSION, checkUserSessionAsync);
+}
+
+export function* signOutStartAsync() {
+  try {
+    yield auth.signOut();
+    yield put(signOutSuccess());
+  } catch (error) {
+    yield put(signOutFailure());
+  }
+}
+
+export function* signOutStart() {
+  yield takeLatest(SIGN_OUT_START, signOutStartAsync);
 }
 
 export default function* userSagas() {
@@ -73,5 +92,6 @@ export default function* userSagas() {
     call(googleSignInStart),
     call(emailSignInStart),
     call(checkUserSession),
+    call(signOutStart),
   ]);
 }
