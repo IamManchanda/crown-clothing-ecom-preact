@@ -1,5 +1,5 @@
 import React, { StrictMode } from "react";
-import { hydrate, render } from "react-dom";
+import { render } from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
@@ -9,9 +9,7 @@ import "./assets/scss/global-styles.scss";
 import App from "./app";
 import { store, persistor } from "./store";
 
-const rootElement = document.getElementById("root");
-
-const AppWithStore = () => (
+render(
   <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
@@ -20,14 +18,9 @@ const AppWithStore = () => (
         </PersistGate>
       </BrowserRouter>
     </Provider>
-  </StrictMode>
+  </StrictMode>,
+  document.getElementById("root"),
 );
-
-if (rootElement.hasChildNodes()) {
-  hydrate(<AppWithStore />, rootElement);
-} else {
-  render(<AppWithStore />, rootElement);
-}
 
 /**
  * If you want your app to work offline and load faster, you can change
