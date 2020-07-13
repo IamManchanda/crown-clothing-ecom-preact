@@ -22,6 +22,14 @@ const CheckoutPageStyled = styled.div`
   .StripeCheckout {
     margin: 0 0 40px auto;
   }
+
+  @media screen and (max-width: 991px) {
+    width: 75%;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 95%;
+  }
 `;
 
 const CheckoutHeaderStyled = styled.div`
@@ -38,6 +46,14 @@ const HeaderBlockStyled = styled.div`
 
   &:last-child {
     width: 8%;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 21%;
+
+    &:last-child {
+      width: 16%;
+    }
   }
 `;
 

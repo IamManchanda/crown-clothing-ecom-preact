@@ -21,6 +21,10 @@ const CheckoutItemStyled = styled.div`
 
 const CheckoutColumnStyled = css`
   width: 23%;
+
+  @media screen and (max-width: 767px) {
+    width: 21%;
+  }
 `;
 
 const ImageContainerStyled = styled.div`
