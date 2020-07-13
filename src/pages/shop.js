@@ -7,6 +7,7 @@ import {
   SpinnerOverlayStyled,
   SpinnerStyled,
 } from "../components/with-spinner";
+import ErrorBoundary from "../components/error-boundary";
 
 const CollectionsOverviewWithContainer = lazy(() =>
   import("../components/collections-overview/with-container"),
@@ -22,23 +23,26 @@ const ShopPage = ({ match, fetchCollectionsStart }) => {
   return (
     <Fragment>
       <Switch>
-        <Suspense
-          fallback={
-            <SpinnerOverlayStyled>
-              <SpinnerStyled />
-            </SpinnerOverlayStyled>
-          }
-        >
-          <Route
-            exact
-            path={`${match.path}`}
-            component={CollectionsOverviewWithContainer}
-          />
-          <Route
-            path={`${match.path}/:collection`}
-            component={CollectionPageWithContainer}
-          />
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense
+            fallback={
+              <SpinnerOverlayStyled>
+                <SpinnerStyled />
+              </SpinnerOverlayStyled>
+            }
+          >
+            <Route
+              exact
+              path={`${match.path}`}
+              component={CollectionsOverviewWithContainer}
+            />
+            <Route
+              exact
+              path={`${match.path}/:collection`}
+              component={CollectionPageWithContainer}
+            />
+          </Suspense>
+        </ErrorBoundary>
       </Switch>
     </Fragment>
   );

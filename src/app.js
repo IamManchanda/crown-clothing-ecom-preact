@@ -7,6 +7,7 @@ import HeaderNavigation from "./components/header-navigation";
 import { selectCurrentUser } from "./store/user/user.selectors";
 import { checkUserSession } from "./store/user/user.actions";
 import { SpinnerOverlayStyled, SpinnerStyled } from "./components/with-spinner";
+import ErrorBoundary from "./components/error-boundary";
 
 const HomePage = lazy(() => import("./pages/index"));
 const ShopPage = lazy(() => import("./pages/shop"));
@@ -21,22 +22,24 @@ const App = ({ currentUser, checkUserSession }) => {
     <Fragment>
       <HeaderNavigation />
       <Switch>
-        <Suspense
-          fallback={
-            <SpinnerOverlayStyled>
-              <SpinnerStyled />
-            </SpinnerOverlayStyled>
-          }
-        >
-          <Route exact path="/" component={HomePage} />
-          <Route path="/shop" component={ShopPage} />
-          <Route exact path="/checkout" component={CheckoutPage} />
-          <Route
-            exact
-            path="/auth"
-            render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
-          />
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense
+            fallback={
+              <SpinnerOverlayStyled>
+                <SpinnerStyled />
+              </SpinnerOverlayStyled>
+            }
+          >
+            <Route exact path="/" component={HomePage} />
+            <Route path="/shop" component={ShopPage} />
+            <Route exact path="/checkout" component={CheckoutPage} />
+            <Route
+              exact
+              path="/auth"
+              render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
+            />
+          </Suspense>
+        </ErrorBoundary>
       </Switch>
     </Fragment>
   );
