@@ -35,7 +35,7 @@ const DIRECTORY_INITIAL_STATE = {
       id: uuidv4(),
       title: "Mens",
       imageUrl:
-        "https://firebasestorage.googleapis.com/v0/b/crown-clothing-ecom-react.appspot.com/o/men.png?alt=media",
+        "https://firebasestorage.googleapis.com/v0/b/crown-clothing-ecom-react.appspot.com/o/mens.png?alt=media",
       size: "large",
       linkUrl: "shop/mens",
     },
