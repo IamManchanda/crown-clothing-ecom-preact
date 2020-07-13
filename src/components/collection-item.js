@@ -20,10 +20,18 @@ const AddToCartButtonStyled = styled(CustomButton)`
   position: absolute;
   top: 255px;
   display: none;
+
+  @media screen and (max-width: 991px) {
+    display: block;
+    opacity: 0.9;
+    min-width: unset;
+    padding: 0 10px;
+  }
 `;
 
 const CollectionItemStyled = styled.div`
   width: 22vw;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   height: 350px;
@@ -40,6 +48,25 @@ const CollectionItemStyled = styled.div`
       display: flex;
     }
   }
+
+  @media screen and (max-width: 991px) {
+    padding: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 40vw;
+    margin-bottom: 20px;
+
+    &:hover {
+      ${BackgroundImageStyled} {
+        opacity: unset;
+      }
+
+      ${AddToCartButtonStyled} {
+        opacity: unset;
+      }
+    }
+  }
 `;
 
 const CollectionFooterStyled = styled.div`
@@ -51,12 +78,22 @@ const CollectionFooterStyled = styled.div`
 `;
 
 const CollectionNameStyled = styled.span`
-  width: 90%;
+  width: 85%;
+  text-align: left;
   margin-bottom: 15px;
+
+  @media screen and (max-width: 991px) {
+    width: 75%;
+  }
 `;
 
 const CollectionPriceStyled = styled.span`
-  width: 10%;
+  width: 15%;
+  text-align: right;
+
+  @media screen and (max-width: 991px) {
+    width: 25%;
+  }
 `;
 
 const CollectionItem = ({ item, addItem }) => {

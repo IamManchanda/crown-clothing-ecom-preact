@@ -8,6 +8,10 @@ import { selectShopCollection } from "../../store/shop/shop.selectors";
 const CollectionPageStyled = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 767px) {
+    align-items: center;
+  }
 `;
 
 const TitleStyled = styled.h1`
@@ -20,10 +24,16 @@ const CollectionItemsContainerStyled = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
   margin-bottom: 40px;
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+  }
 `;
 
 const CollectionItemWrapperStyled = styled.div`
   margin-bottom: 40px;
+  align-items: center;
 `;
 
 const CollectionPage = ({ collection: { title, items } = {} }) => (
