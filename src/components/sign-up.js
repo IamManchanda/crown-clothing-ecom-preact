@@ -11,6 +11,11 @@ const SignUpStyled = styled.div`
   width: 380px;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 991px) {
+    width: 90vw;
+    margin: 0 auto;
+  }
 `;
 
 const TitleStyled = styled.h2`
