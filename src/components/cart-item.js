@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 
 const CartItemStyled = styled.div`
@@ -37,4 +37,4 @@ const CartItem = ({ item: { imageUrl, price, name, quantity } = {} }) => (
   </CartItemStyled>
 );
 
-export default CartItem;
+export default memo(CartItem);
