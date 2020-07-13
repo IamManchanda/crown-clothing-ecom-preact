@@ -19,7 +19,7 @@ const StripeCheckoutButton = ({ price }) => {
       name="Crown Dummy Corp Ltd."
       billingAddress
       shippingAddress
-      image="https://i.imgur.com/Yz8IDjS.png"
+      image="https://firebasestorage.googleapis.com/v0/b/crown-clothing-ecom-react.appspot.com/o/crown-logo.png?alt=media"
       description={`Your total is $${price}`}
       amount={priceForStripe}
       token={handleToken}

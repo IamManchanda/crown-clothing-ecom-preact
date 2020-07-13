@@ -43,7 +43,7 @@ class ErrorBoundary extends Component {
     const { state: { hasErrored } = {}, props: { children } = {} } = this;
     return hasErrored ? (
       <ErrorBoundaryStyled>
-        <ErrorImageWrapperStyled imageUrl="https://i.imgur.com/A040Lxr.png" />
+        <ErrorImageWrapperStyled imageUrl="https://firebasestorage.googleapis.com/v0/b/crown-clothing-ecom-react.appspot.com/o/error-image.png?alt=media" />
         <ErrorImageTextStyled>
           Sorry this page is broken as something went wrong.
         </ErrorImageTextStyled>
