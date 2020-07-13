@@ -17,12 +17,23 @@ const HeaderNavigationStyled = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+
+  @media screen and (max-width: 767px) {
+    height: 60px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
 `;
 
 const LogoContainerStyled = styled(Link)`
   height: 100%;
   width: 70px;
   padding: 10px;
+
+  @media screen and (max-width: 767px) {
+    width: 50px;
+    padding: 0;
+  }
 `;
 
 const OptionsContainerStyled = styled.div`
@@ -31,6 +42,10 @@ const OptionsContainerStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  @media screen and (max-width: 767px) {
+    width: 80%;
+  }
 `;
 
 const OptionLinkStyled = styled(Link)`
