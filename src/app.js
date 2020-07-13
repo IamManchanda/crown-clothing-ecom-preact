@@ -1,15 +1,17 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, lazy, Suspense } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import HomePage from "./pages/index";
-import ShopPage from "./pages/shop";
-import AuthPage from "./pages/auth";
-import CheckoutPage from "./pages/checkout";
 import HeaderNavigation from "./components/header-navigation";
 import { selectCurrentUser } from "./store/user/user.selectors";
 import { checkUserSession } from "./store/user/user.actions";
+import { SpinnerOverlayStyled, SpinnerStyled } from "./components/with-spinner";
+
+const HomePage = lazy(() => import("./pages/index"));
+const ShopPage = lazy(() => import("./pages/shop"));
+const AuthPage = lazy(() => import("./pages/auth"));
+const CheckoutPage = lazy(() => import("./pages/checkout"));
 
 const App = ({ currentUser, checkUserSession }) => {
   useEffect(() => {
@@ -19,14 +21,22 @@ const App = ({ currentUser, checkUserSession }) => {
     <Fragment>
       <HeaderNavigation />
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/shop" component={ShopPage} />
-        <Route exact path="/checkout" component={CheckoutPage} />
-        <Route
-          exact
-          path="/auth"
-          render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
-        />
+        <Suspense
+          fallback={
+            <SpinnerOverlayStyled>
+              <SpinnerStyled />
+            </SpinnerOverlayStyled>
+          }
+        >
+          <Route exact path="/" component={HomePage} />
+          <Route path="/shop" component={ShopPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
+          <Route
+            exact
+            path="/auth"
+            render={() => (currentUser ? <Redirect to="/" /> : <AuthPage />)}
+          />
+        </Suspense>
       </Switch>
     </Fragment>
   );
