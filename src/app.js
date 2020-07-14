@@ -6,6 +6,7 @@ import Header from "./components/header";
 // Code-splitting is automated for routes
 import Home from "./routes/home";
 import About from "./routes/about";
+import Shop from "./routes/shop";
 
 export default class App extends Component {
   /** Gets fired when the route changes.
@@ -23,6 +24,8 @@ export default class App extends Component {
         <Router onChange={this.handleRoute}>
           <Home path="/" />
           <About path="/about" />
+          <Shop path="/shop/" />
+          <Shop path="/shop/:collectionId" />
         </Router>
       </div>
     );

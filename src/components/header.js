@@ -53,6 +53,9 @@ const Header = () => (
     <NavStyled>
       <LinkStyled href="/">Home</LinkStyled>
       <LinkStyled href="/about">About</LinkStyled>
+      <LinkStyled href="/shop">Shop</LinkStyled>
+      <LinkStyled href="/shop/1">Shop 1</LinkStyled>
+      <LinkStyled href="/shop/2">Shop 2</LinkStyled>
     </NavStyled>
   </HeaderStyled>
 );
