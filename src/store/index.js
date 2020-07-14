@@ -5,12 +5,17 @@ import createSagaMiddleware from "redux-saga";
 
 import rootReducer from "./root.reducer";
 import rootSaga from "./root.saga";
+import CART_INITIAL_STATE from "./cart/cart.initial-state";
+import DIRECTORY_INITIAL_STATE from "./directory/directory.initial-state";
+import SHOP_INITIAL_STATE from "./shop/shop.initial-state";
+import USER_INITIAL_STATE from "./user/user.initial-state";
 
 const sagaMiddleware = createSagaMiddleware();
 const middlewares = [
   sagaMiddleware,
   ...(process.env.NODE_ENV === "development" ? [logger] : []),
 ];
+
 const composeEnhancers =
   process.env.NODE_ENV === "development" &&
   typeof window === "object" &&
@@ -21,7 +26,14 @@ const composeEnhancers =
     : compose;
 const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 
-export const store = createStore(rootReducer, enhancer);
+const initialState = {
+  cart: CART_INITIAL_STATE,
+  directory: DIRECTORY_INITIAL_STATE,
+  shop: SHOP_INITIAL_STATE,
+  user: USER_INITIAL_STATE,
+};
+
+export const store = createStore(rootReducer, initialState, enhancer);
 sagaMiddleware.run(rootSaga);
 export const persistor = persistStore(store);
 
