@@ -1,27 +1,12 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
 import { connect } from "react-redux";
-import styled from "styled-components";
 
+import { AuthStyled, TitleStyled, ButtonGroupStyled } from "./auth.styled";
 import FormInput from "./form-input";
 import CustomButton from "./custom-button";
 import { EMPTY_SIGN_UP_STATE } from "../constants/empty-auth-state";
 import { signUpStart } from "../store/user/user.actions";
-
-const SignUpStyled = styled.div`
-  width: 380px;
-  display: flex;
-  flex-direction: column;
-
-  @media screen and (max-width: 991px) {
-    width: 90vw;
-    margin: 0 auto;
-  }
-`;
-
-const TitleStyled = styled.h2`
-  margin: 10px 0;
-`;
 
 const SignUp = ({ signUpStart }) => {
   const [userCredentials, setUserCredentials] = useState(EMPTY_SIGN_UP_STATE);
@@ -42,7 +27,7 @@ const SignUp = ({ signUpStart }) => {
     });
   };
   return (
-    <SignUpStyled>
+    <AuthStyled>
       <TitleStyled>I do not have an account.</TitleStyled>
       <span>Sign up with your name, email and password.</span>
       <form onSubmit={handleFormSubmit}>
@@ -78,9 +63,11 @@ const SignUp = ({ signUpStart }) => {
           onChange={handleFormInputChange}
           required
         />
-        <CustomButton type="submit">Sign Up</CustomButton>
+        <ButtonGroupStyled>
+          <CustomButton type="submit">Sign Up</CustomButton>
+        </ButtonGroupStyled>
       </form>
-    </SignUpStyled>
+    </AuthStyled>
   );
 };
 

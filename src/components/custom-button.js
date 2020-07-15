@@ -16,21 +16,7 @@ const CustomButtonStyled = styled.button`
   display: flex;
   justify-content: center;
 
-  ${({ googleSignIn, inverted }) => {
-    if (googleSignIn) {
-      return css`
-        background-color: #4285f4;
-        color: white;
-        border: none;
-
-        &:hover {
-          background-color: white;
-          color: #357ae8;
-          border: 1px solid black;
-        }
-      `;
-    }
-
+  ${({ inverted }) => {
     if (inverted) {
       return css`
         background-color: white;

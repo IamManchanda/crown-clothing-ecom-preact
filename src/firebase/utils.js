@@ -29,8 +29,6 @@ const isBrowser = typeof window !== "undefined";
 if (isBrowser) firebase.initializeApp(config);
 export const auth = isBrowser && firebase.auth();
 export const firestore = isBrowser && firebase.firestore();
-export const googleProvider =
-  isBrowser && new firebase.auth.GoogleAuthProvider();
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;

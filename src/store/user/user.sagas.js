@@ -2,12 +2,10 @@ import { takeLatest, put, all, call } from "redux-saga/effects";
 
 import {
   auth,
-  googleProvider,
   createUserProfileDocument,
   getCurrentUser,
 } from "../../firebase/utils";
 import {
-  GOOGLE_SIGN_IN_START,
   EMAIL_SIGN_IN_START,
   CHECK_USER_SESSION,
   SIGN_OUT_START,
@@ -40,20 +38,6 @@ function* getSnapshotFromUserAuth(userAuth, additionalData) {
   } catch (error) {
     yield put(signInFailure(error));
   }
-}
-
-function* googleSignInStartAsync() {
-  try {
-    const { user } = yield auth.signInWithPopup(googleProvider);
-    googleProvider.setCustomParameters({ prompt: "select_account" });
-    yield getSnapshotFromUserAuth(user);
-  } catch (error) {
-    yield put(signInFailure(error));
-  }
-}
-
-function* googleSignInStart() {
-  yield takeLatest(GOOGLE_SIGN_IN_START, googleSignInStartAsync);
 }
 
 function* emailSignInStartAsync({ payload: { email, password } = {} }) {
@@ -126,7 +110,6 @@ function* afterSignUpSuccess() {
 
 export default function* userSagas() {
   yield all([
-    call(googleSignInStart),
     call(emailSignInStart),
     call(checkUserSession),
     call(signOutStart),
