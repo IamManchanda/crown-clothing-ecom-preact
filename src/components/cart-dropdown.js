@@ -18,9 +18,9 @@ const CartDropdownStyled = styled.div`
   padding: 20px;
   border: 1px solid black;
   background-color: white;
-  top: 90px;
-  right: 50px;
   z-index: 5;
+  top: 80px;
+  right: 70px;
 
   @media screen and (max-width: 991px) {
     top: 67px;
