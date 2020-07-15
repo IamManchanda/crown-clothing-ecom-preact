@@ -23,8 +23,12 @@ const CartDropdownStyled = styled.div`
   right: 70px;
 
   @media screen and (max-width: 991px) {
-    top: 67px;
+    top: 70px;
     right: 30px;
+  }
+
+  @media screen and (max-width: 767px) {
+    top: 65px;
   }
 `;
 
