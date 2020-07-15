@@ -1,13 +1,12 @@
 {
-  "name": "crown-clothing-ecom-preact",
-  "short_name": "crown-clothing-ecom-preact",
+  "name": "Crown Clothing",
+  "short_name": "Shop at Crown Clothing",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",
   "theme_color": "#673ab8",
-  "icons": [
-    {
+  "icons": [{
       "src": "/assets/icons/android-chrome-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
