@@ -1,0 +1,29 @@
+{
+  "hosting": {
+    "site": "crown-clothing-ecom-preact",
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [{
+        "source": "**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/about",
+        "destination": "/about/index.html"
+      }, {
+        "source": "/shop",
+        "destination": "/shop/index.html"
+      }, {
+        "source": "/shop/1",
+        "destination": "/shop/1/index.html"
+      }, {
+        "source": "/shop/2",
+        "destination": "/shop/2/index.html"
+      }
+    ]
+  }
+}
