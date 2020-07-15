@@ -54,6 +54,9 @@
       }, {
         "source": "/shop/womens",
         "destination": "/shop/womens/index.html"
+      }, {
+        "source": "/robots.txt",
+        "destination": "/robots.txt"
       }
     ]
   }

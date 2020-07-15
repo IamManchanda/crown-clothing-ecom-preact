@@ -27,10 +27,6 @@ const GoToCheckoutButtonStyled = styled(CustomButton)`
   margin-top: 15px;
 `;
 
-const LinkStyled = styled(Link)`
-  margin: 0 auto;
-`;
-
 const EmptyMessageStyled = styled.span`
   font-size: 18px;
   margin: 50px auto;
@@ -54,9 +50,13 @@ const CartDropdown = ({ cartItems, dispatch }) => (
         <EmptyMessageStyled>Your cart is empty.</EmptyMessageStyled>
       )}
     </CartItemsContainerStyled>
-    <LinkStyled href="/checkout" onClick={() => dispatch(toggleCartHidden())}>
+    <Link
+      className="checkout-button-link"
+      href="/checkout"
+      onClick={() => dispatch(toggleCartHidden())}
+    >
       <GoToCheckoutButtonStyled>GO TO CHECKOUT</GoToCheckoutButtonStyled>
-    </LinkStyled>
+    </Link>
   </CartDropdownStyled>
 );
 

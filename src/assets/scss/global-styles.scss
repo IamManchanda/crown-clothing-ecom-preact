@@ -7,6 +7,10 @@
  * functionality such as Styled components, `createGlobalStyle`
  **/
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Open Sans Condensed",
@@ -32,8 +36,63 @@ code {
 a {
   text-decoration: none;
   color: black;
-}
 
-* {
-  box-sizing: border-box;
+  &.checkout-button-link {
+    margin: 0 auto;
+  }
+
+  &.logo-container-link {
+    height: 100%;
+    width: 70px;
+    padding: 10px;
+
+    @media screen and (max-width: 767px) {
+      width: 50px;
+      padding: 0;
+    }
+  }
+
+  &.option-link {
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+
+  &.menu-item-link {
+    min-width: 30%;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    margin: 0 7.5px 15px;
+    overflow: hidden;
+    height: 240px;
+
+    &.menu-item-link--large {
+      height: 380px;
+    }
+
+    &:hover {
+      & .menu-item-link__background-image {
+        transform: scale(1.1);
+        transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      }
+
+      & .menu-item-link__content {
+        opacity: 0.9;
+      }
+    }
+
+    &:first-child {
+      margin-right: 7.5px;
+    }
+
+    &:last-child {
+      margin-left: 7.5px;
+    }
+
+    @media screen and (max-width: 767px) {
+      height: 200px;
+    }
+  }
 }
