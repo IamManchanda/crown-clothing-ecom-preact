@@ -1,17 +1,18 @@
 import { h } from "preact";
 import styled from "styled-components";
 
-const HomeStyled = styled.div`
-  padding: 56px 20px;
-  min-height: 100%;
-  width: 100%;
+import DirectoryMenu from "../components/directory-menu";
+
+const HomePageStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-const Home = () => (
-  <HomeStyled>
-    <h1>Home</h1>
-    <p>This is the Home component.</p>
-  </HomeStyled>
+const HomePage = () => (
+  <HomePageStyled>
+    <DirectoryMenu />
+  </HomePageStyled>
 );
 
-export default Home;
+export default HomePage;

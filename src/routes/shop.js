@@ -1,16 +1,29 @@
 import { h } from "preact";
+import { useEffect } from "preact/hooks";
 import { Router } from "preact-router";
-import CollectionsOverview from "../components/collections-overview";
-import CollectionPage from "../components/collection-page";
+import { connect } from "react-redux";
 
-const Shop = ({ collectionId }) => (
-  <Router>
-    <CollectionsOverview path="/shop" />
-    <CollectionPage
-      collectionId={collectionId}
-      path={`/shop/:${collectionId}`}
-    />
-  </Router>
-);
+import CollectionsOverviewWithContainer from "../components/collections-overview/with-container";
+import CollectionPageWithContainer from "../components/collection-page/with-container";
+import { fetchCollectionsStart } from "../store/shop/shop.actions";
 
-export default Shop;
+const ShopPage = ({ collectionId, fetchCollectionsStart }) => {
+  useEffect(() => {
+    fetchCollectionsStart();
+  }, [fetchCollectionsStart]);
+  return (
+    <Router>
+      <CollectionsOverviewWithContainer path="/shop" />
+      <CollectionPageWithContainer
+        collectionId={collectionId}
+        path={`/shop/:${collectionId}`}
+      />
+    </Router>
+  );
+};
+
+const mapStateToProps = null;
+const mapDispatchToProps = (dispatch) => ({
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(ShopPage);
