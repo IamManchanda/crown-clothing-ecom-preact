@@ -1,6 +1,6 @@
 {
-  "name": "Crown Clothing",
-  "short_name": "Shop at Crown Clothing",
+  "name": "Crown Clothing Shoppe",
+  "short_name": "Crown Clothing",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
