@@ -11,6 +11,7 @@ const ShopPage = ({ collectionId, fetchCollectionsStart }) => {
   useEffect(() => {
     fetchCollectionsStart();
   }, [fetchCollectionsStart]);
+
   return (
     <Router>
       <CollectionsOverviewWithContainer path="/shop" />

@@ -49,6 +49,7 @@
     "reselect": "^4.0.0",
     "sass-loader": "^9.0.2",
     "styled-components": "^5.1.1",
+    "supports-webp": "^2.0.1",
     "uuid": "^8.2.0"
   },
   "jest": {

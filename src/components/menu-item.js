@@ -1,6 +1,10 @@
 import { h } from "preact";
 import { Link } from "preact-router/match";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+
+import { selectBrowserisWebPSupported } from "../store/browser/browser.selectors";
 
 const BackgroundImageStyled = styled.div`
   width: 100%;
@@ -72,14 +76,19 @@ const SubtitleStyled = styled.span`
   font-size: 16px;
 `;
 
-const MenuItem = ({ title, imageUrl, size, linkUrl }) => (
+const MenuItem = ({ title, imageUrl, size, linkUrl, isWebPSupported }) => (
   <MenuItemLinkStyled large={size === "large" ? 1 : 0} href={`/${linkUrl}`}>
     <BackgroundImageStyled imageUrl={imageUrl} />
     <ContentStyled>
       <TitleStyled>{title.toUpperCase()}</TitleStyled>
-      <SubtitleStyled>SHOP NOW</SubtitleStyled>
+      <SubtitleStyled>
+        SHOP NOW | {isWebPSupported ? "Webp" : "PNG"}
+      </SubtitleStyled>
     </ContentStyled>
   </MenuItemLinkStyled>
 );
 
-export default MenuItem;
+const mapStateToProps = createStructuredSelector({
+  isWebPSupported: selectBrowserisWebPSupported,
+});
+export default connect(mapStateToProps)(MenuItem);

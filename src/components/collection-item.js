@@ -1,9 +1,12 @@
 import { h } from "preact";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { createStructuredSelector } from "reselect";
 
 import CustomButton from "./custom-button";
 import { addItem } from "../store/cart/cart.actions";
+
+import { selectBrowserisWebPSupported } from "../store/browser/browser.selectors";
 
 const BackgroundImageStyled = styled.div`
   width: 100%;
@@ -96,7 +99,7 @@ const CollectionPriceStyled = styled.span`
   }
 `;
 
-const CollectionItem = ({ item, addItem }) => {
+const CollectionItem = ({ item, addItem, isWebPSupported }) => {
   const { name, price, imageUrl } = item;
   return (
     <CollectionItemStyled>
@@ -106,13 +109,15 @@ const CollectionItem = ({ item, addItem }) => {
         <CollectionPriceStyled>${price}</CollectionPriceStyled>
       </CollectionFooterStyled>
       <AddToCartButtonStyled onClick={() => addItem(item)} inverted>
-        Add to Cart
+        Add to Cart | {isWebPSupported ? "Webp" : "PNG"}
       </AddToCartButtonStyled>
     </CollectionItemStyled>
   );
 };
 
-const mapStateToProps = null;
+const mapStateToProps = createStructuredSelector({
+  isWebPSupported: selectBrowserisWebPSupported,
+});
 const mapDispatchToProps = (dispatch) => ({
   addItem: (item) => dispatch(addItem(item)),
 });

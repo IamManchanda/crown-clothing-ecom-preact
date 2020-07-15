@@ -9,6 +9,7 @@ import HeaderNavigation from "./components/header-navigation";
 import Redirect from "./components/redirect";
 import { selectCurrentUser } from "./store/user/user.selectors";
 import { checkUserSession } from "./store/user/user.actions";
+import { isWebPSupportedStart } from "./store/browser/browser.actions";
 
 // Code-splitting is automated for routes
 import Home from "./routes/home";
@@ -16,10 +17,14 @@ import Auth from "./routes/auth";
 import Checkout from "./routes/checkout";
 import Shop from "./routes/shop";
 
-const App = ({ currentUser, checkUserSession }) => {
+const App = ({ currentUser, checkUserSession, isWebPSupportedStart }) => {
   useEffect(() => {
     checkUserSession();
   }, [checkUserSession]);
+
+  useEffect(() => {
+    isWebPSupportedStart();
+  }, [isWebPSupportedStart]);
 
   return (
     <div id="app">
@@ -59,5 +64,6 @@ const mapStateToProps = createStructuredSelector({
 });
 const mapDispatchToProps = (dispatch) => ({
   checkUserSession: () => dispatch(checkUserSession()),
+  isWebPSupportedStart: () => dispatch(isWebPSupportedStart()),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
