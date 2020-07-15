@@ -29,9 +29,10 @@ const isBrowser = typeof window !== "undefined";
 if (isBrowser) firebase.initializeApp(config);
 export const auth = isBrowser && firebase.auth();
 export const firestore = isBrowser && firebase.firestore();
-export const googleProvider =
-  isBrowser && new firebase.auth.GoogleAuthProvider();
-if (isBrowser) googleProvider.setCustomParameters({ prompt: "select_account" });
+export const googleProvider = isBrowser
+  ? new firebase.auth.GoogleAuthProvider()
+  : { setCustomParameters() {} };
+googleProvider.setCustomParameters({ prompt: "select_account" });
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;

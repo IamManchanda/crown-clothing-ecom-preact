@@ -2,6 +2,8 @@ node_modules
 /build
 /*.log
 
+.vscode
+
 # environment variables
 .env
 .env.development
