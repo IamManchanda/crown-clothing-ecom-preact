@@ -1,7 +1,9 @@
 import { h } from "preact";
 import { connect } from "react-redux";
-
 import styled, { css } from "styled-components";
+import { createStructuredSelector } from "reselect";
+
+import { selectBrowserisWebPSupported } from "../store/browser/browser.selectors";
 
 import {
   clearItemFromCart,
@@ -63,14 +65,22 @@ const RemoveButtonStyled = styled.div`
   cursor: pointer;
 `;
 
-const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
+const CheckoutItem = ({
+  cartItem,
+  clearItem,
+  addItem,
+  removeItem,
+  isWebPSupported,
+}) => {
   const { name, price, imageUrl, quantity } = cartItem;
   return (
     <CheckoutItemStyled>
       <ImageContainerStyled>
         <img src={imageUrl} alt={name} />
       </ImageContainerStyled>
-      <NameStyled>{name}</NameStyled>
+      <NameStyled>
+        {name} | {isWebPSupported ? "Webp" : "PNG"}
+      </NameStyled>
       <QuantityStyled>
         <QuantityArrowStyled onClick={() => removeItem(cartItem)}>
           &#10094;
@@ -88,7 +98,9 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
   );
 };
 
-const mapStateToProps = null;
+const mapStateToProps = createStructuredSelector({
+  isWebPSupported: selectBrowserisWebPSupported,
+});
 const mapDispatchToProps = (dispatch) => ({
   clearItem: (item) => dispatch(clearItemFromCart(item)),
   addItem: (item) => dispatch(addItem(item)),

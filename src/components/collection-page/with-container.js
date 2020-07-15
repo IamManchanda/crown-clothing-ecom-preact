@@ -10,8 +10,4 @@ const mapStateToProps = createStructuredSelector({
   isLoading: (state) => !selectShopCollectionsIsLoaded(state),
 });
 
-const CollectionPageWithContainer = compose(
-  connect(mapStateToProps),
-  withSpinner,
-)(CollectionPage);
-export default CollectionPageWithContainer;
+export default compose(connect(mapStateToProps), withSpinner)(CollectionPage);
