@@ -6,9 +6,9 @@ import browserSagas from "./browser/browser.sagas";
 
 export default function* rootSaga() {
   yield all([
+    call(browserSagas),
     call(shopSagas),
     call(userSagas),
     call(cartSagas),
-    call(browserSagas),
   ]);
 }
