@@ -7,6 +7,10 @@
  * functionality such as Styled components, `createGlobalStyle`
  **/
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Open Sans Condensed",
@@ -34,6 +38,6 @@ a {
   color: black;
 }
 
-* {
-  box-sizing: border-box;
+.visually-hidden {
+  display: none;
 }
