@@ -18,13 +18,13 @@ const CartIconStyled = styled.div`
 `;
 
 const ShoppingIconStyled = styled(ShoppingIcon)`
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
 `;
 
 const ItemCountStyled = styled.span`
   position: absolute;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
   bottom: 12px;
 `;
