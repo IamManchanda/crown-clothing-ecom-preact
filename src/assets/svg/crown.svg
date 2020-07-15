@@ -1,1 +1,14 @@
-<svg height="39" viewBox="0 0 50 39" width="50" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" transform=""><path d="m3 14 22 12.5 22-12.5-6.144824 25h-31.77095815z" fill="#808282"/><path d="m25 8 15 31h-30z" fill="#101a1a" fill-opacity=".262839"/><g fill="#5e6363"><circle cx="2" cy="9" r="2"/><circle cx="25" cy="2" r="2"/><circle cx="48" cy="9" r="2"/></g></g></svg>
+<svg role="img" aria-describedby="brandtitle branddescription" height="39" viewBox="0 0 50 39" width="50"
+  xmlns="http://www.w3.org/2000/svg">
+  <title id="brandtitle">Welcome to Crown Clothing</title>
+  <desc id="branddescription">Shop at Crown Clothing</desc>
+  <g fill="none" fill-rule="evenodd" transform="">
+    <path d="m3 14 22 12.5 22-12.5-6.144824 25h-31.77095815z" fill="#808282"/>
+    <path d="m25 8 15 31h-30z" fill="#101a1a" fill-opacity=".262839"/>
+    <g fill="#5e6363">
+      <circle cx="2" cy="9" r="2"/>
+      <circle cx="25" cy="2" r="2"/>
+      <circle cx="48" cy="9" r="2"/>
+    </g>
+  </g>
+</svg>
