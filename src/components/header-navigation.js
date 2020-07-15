@@ -25,6 +25,17 @@ const HeaderNavigationStyled = styled.div`
   }
 `;
 
+const LogoContainerStyled = styled(Link)`
+  height: 100%;
+  width: 70px;
+  padding: 10px;
+
+  @media screen and (max-width: 767px) {
+    width: 50px;
+    padding: 0;
+  }
+`;
+
 const OptionsContainerStyled = styled.div`
   width: 50%;
   height: 100%;
@@ -37,23 +48,24 @@ const OptionsContainerStyled = styled.div`
   }
 `;
 
+const OptionLinkStyled = styled(Link)`
+  padding: 10px 15px;
+  cursor: pointer;
+`;
+
 const HeaderNavigation = ({ currentUser, hidden, signOutStart }) => (
   <HeaderNavigationStyled>
-    <Link href="/" className="logo-container-link">
+    <LogoContainerStyled href="/">
       <Logo className="logo" />
-    </Link>
+    </LogoContainerStyled>
     <OptionsContainerStyled>
-      <Link className="option-link" href="/shop">
-        SHOP
-      </Link>
+      <OptionLinkStyled href="/shop">SHOP</OptionLinkStyled>
       {currentUser ? (
-        <Link className="option-link" as="div" onClick={signOutStart}>
+        <OptionLinkStyled as="div" onClick={signOutStart}>
           SIGN OUT
-        </Link>
+        </OptionLinkStyled>
       ) : (
-        <Link className="option-link" href="/auth">
-          SIGN IN
-        </Link>
+        <OptionLinkStyled href="/auth">SIGN IN</OptionLinkStyled>
       )}
       <CartIcon />
     </OptionsContainerStyled>

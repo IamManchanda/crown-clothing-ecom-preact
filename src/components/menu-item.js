@@ -23,6 +23,43 @@ const ContentStyled = styled.div`
   position: absolute;
 `;
 
+const MenuItemLinkStyled = styled(Link)`
+  min-width: 30%;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  margin: 0 7.5px 15px;
+  overflow: hidden;
+  height: ${({ large }) => (large ? "380px" : "240px")};
+
+  &:hover {
+    cursor: pointer;
+
+    & ${BackgroundImageStyled} {
+      transform: scale(1.1);
+      transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    }
+
+    & ${ContentStyled} {
+      opacity: 0.9;
+    }
+  }
+
+  &:first-child {
+    margin-right: 7.5px;
+  }
+
+  &:last-child {
+    margin-left: 7.5px;
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 200px;
+  }
+`;
+
 const TitleStyled = styled.h1`
   font-weight: bold;
   margin-bottom: 6px;
@@ -35,22 +72,14 @@ const SubtitleStyled = styled.span`
   font-size: 16px;
 `;
 
-const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
-  const menuItemLinkClassNames = `menu-item-link${
-    size === "large" ? " menu-item-link--large" : ""
-  }`;
-  return (
-    <Link className={menuItemLinkClassNames} href={`/${linkUrl}`}>
-      <BackgroundImageStyled
-        className="menu-item-link__background-image"
-        imageUrl={imageUrl}
-      />
-      <ContentStyled className="menu-item-link__content">
-        <TitleStyled>{title.toUpperCase()}</TitleStyled>
-        <SubtitleStyled>SHOP NOW</SubtitleStyled>
-      </ContentStyled>
-    </Link>
-  );
-};
+const MenuItem = ({ title, imageUrl, size, linkUrl }) => (
+  <MenuItemLinkStyled large={size === "large" ? 1 : 0} href={`/${linkUrl}`}>
+    <BackgroundImageStyled imageUrl={imageUrl} />
+    <ContentStyled>
+      <TitleStyled>{title.toUpperCase()}</TitleStyled>
+      <SubtitleStyled>SHOP NOW</SubtitleStyled>
+    </ContentStyled>
+  </MenuItemLinkStyled>
+);
 
 export default MenuItem;
