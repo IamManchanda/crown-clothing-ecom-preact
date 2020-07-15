@@ -21,6 +21,11 @@ const CartDropdownStyled = styled.div`
   top: 90px;
   right: 50px;
   z-index: 5;
+
+  @media screen and (max-width: 991px) {
+    top: 67px;
+    right: 30px;
+  }
 `;
 
 const GoToCheckoutButtonStyled = styled(CustomButton)`
