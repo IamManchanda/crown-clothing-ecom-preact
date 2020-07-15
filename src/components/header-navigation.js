@@ -29,10 +29,13 @@ const LogoContainerStyled = styled(Link)`
   height: 100%;
   width: 70px;
   padding: 10px;
+  text-align: center;
+  font-size: 14px;
 
   @media screen and (max-width: 767px) {
     width: 50px;
     padding: 0;
+    font-size: 11px;
   }
 `;
 
@@ -57,6 +60,7 @@ const HeaderNavigation = ({ currentUser, hidden, signOutStart }) => (
   <HeaderNavigationStyled>
     <LogoContainerStyled href="/">
       <Logo className="logo" />
+      Clothing
     </LogoContainerStyled>
     <OptionsContainerStyled>
       <OptionLinkStyled href="/shop">SHOP</OptionLinkStyled>
