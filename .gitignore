@@ -1,0 +1,17 @@
+
+node_modules
+/build
+/*.log
+
+# environment variables
+.env
+.env.development
+.env.test
+.env.production
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# firebase caching
+.firebase/
