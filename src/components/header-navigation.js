@@ -36,6 +36,10 @@ const LogoContainerStyled = styled(Link)`
   }
 `;
 
+const LogoContent = styled.span`
+  display: none;
+`;
+
 const OptionsContainerStyled = styled.div`
   width: 50%;
   height: 100%;
@@ -57,6 +61,7 @@ const HeaderNavigation = ({ currentUser, hidden, signOutStart }) => (
   <HeaderNavigationStyled>
     <LogoContainerStyled href="/">
       <Logo className="logo" />
+      <LogoContent>Crown Clothing</LogoContent>
     </LogoContainerStyled>
     <OptionsContainerStyled>
       <OptionLinkStyled href="/shop">SHOP</OptionLinkStyled>
