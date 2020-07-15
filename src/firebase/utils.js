@@ -90,5 +90,3 @@ export const getCurrentUser = () =>
       resolve(userAuth);
     }, reject);
   });
-
-export default firebase;

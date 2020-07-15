@@ -5,9 +5,10 @@
   "license": "MIT",
   "scripts": {
     "build": "preact build --prerenderUrls src/prerender-urls.js",
-    "deploy": "npm run build && firebase deploy --only hosting:crown-clothing-ecom-preact",
     "serve": "sirv build --cors --single",
     "dev": "preact watch",
+    "start": "npm run build && npm run serve",
+    "deploy": "npm run build && firebase deploy --only hosting:crown-clothing-ecom-preact",
     "lint": "eslint src",
     "test": "jest"
   },
