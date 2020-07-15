@@ -45,6 +45,7 @@ function* getSnapshotFromUserAuth(userAuth, additionalData) {
 function* googleSignInStartAsync() {
   try {
     const { user } = yield auth.signInWithPopup(googleProvider);
+    googleProvider.setCustomParameters({ prompt: "select_account" });
     yield getSnapshotFromUserAuth(user);
   } catch (error) {
     yield put(signInFailure(error));
