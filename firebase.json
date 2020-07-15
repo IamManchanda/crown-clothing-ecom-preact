@@ -12,17 +12,29 @@
         "destination": "/index.html"
       },
       {
-        "source": "/about",
-        "destination": "/about/index.html"
+        "source": "/auth",
+        "destination": "/auth/index.html"
+      }, {
+        "source": "/checkout",
+        "destination": "/checkout/index.html"
       }, {
         "source": "/shop",
         "destination": "/shop/index.html"
       }, {
-        "source": "/shop/1",
-        "destination": "/shop/1/index.html"
+        "source": "/shop/hats",
+        "destination": "/shop/hats/index.html"
       }, {
-        "source": "/shop/2",
-        "destination": "/shop/2/index.html"
+        "source": "/shop/sneakers",
+        "destination": "/shop/sneakers/index.html"
+      }, {
+        "source": "/shop/jackets",
+        "destination": "/shop/jackets/index.html"
+      }, {
+        "source": "/shop/mens",
+        "destination": "/shop/mens/index.html"
+      }, {
+        "source": "/shop/womens",
+        "destination": "/shop/womens/index.html"
       }
     ]
   }
