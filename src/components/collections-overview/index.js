@@ -16,9 +16,11 @@ const CollectionsOverview = ({ collections }) => (
   <Fragment>
     <Helmet title="Shop" />
     <CollectionsOverviewStyled>
-      {collections.map(({ id, ...otherCollectionProps }) => (
-        <CollectionPreview key={id} {...otherCollectionProps} />
-      ))}
+      {collections
+        .sort((a, b) => a.idx - b.idx)
+        .map(({ id, ...otherCollectionProps }) => (
+          <CollectionPreview key={id} {...otherCollectionProps} />
+        ))}
     </CollectionsOverviewStyled>
   </Fragment>
 );

@@ -66,10 +66,11 @@ export const addCollectionAndDocuments = async (
 
 export const convertCollectionsSnapshotsToMap = (collections) => {
   const transformedCollection = collections.docs.map((doc) => {
-    const { title, items } = doc.data();
+    const { idx, title, items } = doc.data();
     return {
       id: doc.id,
       routeName: encodeURI(title.toLowerCase()),
+      idx,
       title,
       items,
     };
