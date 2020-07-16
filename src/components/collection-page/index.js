@@ -1,4 +1,5 @@
 import { h, Fragment } from "preact";
+import { useEffect } from "preact/hooks";
 import Helmet from "preact-helmet";
 import { connect } from "react-redux";
 import styled from "styled-components";
@@ -37,21 +38,27 @@ const CollectionItemWrapperStyled = styled.div`
   align-items: center;
 `;
 
-const CollectionPage = ({ collection: { title, items } = {} }) => (
-  <Fragment>
-    <Helmet title={`Shop: ${title}`} />
-    <CollectionPageStyled>
-      <TitleStyled>{title}</TitleStyled>
-      <CollectionItemsContainerStyled>
-        {items.map((item) => (
-          <CollectionItemWrapperStyled key={item.id}>
-            <CollectionItem item={item} />
-          </CollectionItemWrapperStyled>
-        ))}
-      </CollectionItemsContainerStyled>
-    </CollectionPageStyled>
-  </Fragment>
-);
+const CollectionPage = ({ collection: { title, items } = {} }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <Fragment>
+      <Helmet title={`Shop: ${title}`} />
+      <CollectionPageStyled>
+        <TitleStyled>{title}</TitleStyled>
+        <CollectionItemsContainerStyled>
+          {items.map((item) => (
+            <CollectionItemWrapperStyled key={item.id}>
+              <CollectionItem item={item} />
+            </CollectionItemWrapperStyled>
+          ))}
+        </CollectionItemsContainerStyled>
+      </CollectionPageStyled>
+    </Fragment>
+  );
+};
 
 const mapStateToProps = (state, ownProps) => ({
   collection: selectShopCollection(ownProps.collectionId)(state),

@@ -1,6 +1,6 @@
 import { h } from "preact";
-import Helmet from "preact-helmet";
 import { useEffect } from "preact/hooks";
+import Helmet from "preact-helmet";
 import { Router } from "preact-router";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
