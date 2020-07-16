@@ -100,16 +100,18 @@ const CollectionPriceStyled = styled.span`
 `;
 
 const CollectionItem = ({ item, addItem, isWebPSupported }) => {
-  const { name, price, imageUrl } = item;
+  const { name, price, imageUrl, imageUrlWebP } = item;
   return (
     <CollectionItemStyled>
-      <BackgroundImageStyled imageUrl={imageUrl} />
+      <BackgroundImageStyled
+        imageUrl={isWebPSupported ? imageUrlWebP : imageUrl}
+      />
       <CollectionFooterStyled>
         <CollectionNameStyled>{name}</CollectionNameStyled>
         <CollectionPriceStyled>${price}</CollectionPriceStyled>
       </CollectionFooterStyled>
       <AddToCartButtonStyled onClick={() => addItem(item)} inverted>
-        Add to Cart | {isWebPSupported ? "Webp" : "PNG"}
+        Add to Cart
       </AddToCartButtonStyled>
     </CollectionItemStyled>
   );

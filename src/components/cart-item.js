@@ -32,15 +32,13 @@ const ItemNameStyled = styled.span`
 `;
 
 const CartItem = ({
-  item: { imageUrl, price, name, quantity } = {},
+  item: { imageUrl, imageUrlWebP, price, name, quantity } = {},
   isWebPSupported,
 }) => (
   <CartItemStyled>
-    <img src={imageUrl} alt={name} />
+    <img src={isWebPSupported ? imageUrlWebP : imageUrl} alt={name} />
     <ItemDetailsStyled>
-      <ItemNameStyled>
-        {name} | {isWebPSupported ? "Webp" : "PNG"}
-      </ItemNameStyled>
+      <ItemNameStyled>{name}</ItemNameStyled>
       <ItemNameStyled>
         {quantity} x ${price}
       </ItemNameStyled>

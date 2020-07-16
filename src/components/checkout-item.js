@@ -72,15 +72,13 @@ const CheckoutItem = ({
   removeItem,
   isWebPSupported,
 }) => {
-  const { name, price, imageUrl, quantity } = cartItem;
+  const { name, price, imageUrl, imageUrlWebP, quantity } = cartItem;
   return (
     <CheckoutItemStyled>
       <ImageContainerStyled>
-        <img src={imageUrl} alt={name} />
+        <img src={isWebPSupported ? imageUrlWebP : imageUrl} alt={name} />
       </ImageContainerStyled>
-      <NameStyled>
-        {name} | {isWebPSupported ? "Webp" : "PNG"}
-      </NameStyled>
+      <NameStyled>{name}</NameStyled>
       <QuantityStyled>
         <QuantityArrowStyled onClick={() => removeItem(cartItem)}>
           &#10094;
