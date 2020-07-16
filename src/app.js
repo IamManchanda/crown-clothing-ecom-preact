@@ -12,10 +12,10 @@ import { checkUserSession } from "./store/user/user.actions";
 import { isWebPSupportedStart } from "./store/browser/browser.actions";
 
 // Code-splitting is automated for routes
-import Home from "./routes/home";
-import Auth from "./routes/auth";
-import Checkout from "./routes/checkout";
-import Shop from "./routes/shop";
+import HomePage from "./routes/home";
+import ShopPage from "./routes/shop";
+import AuthPage from "./routes/auth";
+import CheckoutPage from "./routes/checkout";
 
 const App = ({ currentUser, checkUserSession, isWebPSupportedStart }) => {
   useEffect(() => {
@@ -66,11 +66,15 @@ const App = ({ currentUser, checkUserSession, isWebPSupportedStart }) => {
       />
       <HeaderNavigation />
       <Router>
-        <Home path="/" />
-        {currentUser ? <Redirect path="/auth" to="/" /> : <Auth path="/auth" />}
-        <Checkout path="/checkout" />
-        <Shop path="/shop/" />
-        <Shop path="/shop/:collectionId" />
+        <HomePage path="/" />
+        <ShopPage path="/shop/" />
+        <ShopPage path="/shop/:collectionId" />
+        {currentUser ? (
+          <Redirect path="/auth" to="/" />
+        ) : (
+          <AuthPage path="/auth" />
+        )}
+        <CheckoutPage path="/checkout" />
       </Router>
     </div>
   );

@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "preact build --prerenderUrls src/prerender-urls.js",
+    "analyze": "npm run build -- --analyze",
     "serve": "sirv build --cors --single",
     "dev": "preact watch",
     "start": "npm run build && npm run serve",
