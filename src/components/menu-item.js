@@ -76,14 +76,21 @@ const SubtitleStyled = styled.span`
   font-size: 16px;
 `;
 
-const MenuItem = ({ title, imageUrl, size, linkUrl, isWebPSupported }) => (
+const MenuItem = ({
+  title,
+  imageUrl,
+  imageUrlWebP,
+  size,
+  linkUrl,
+  isWebPSupported,
+}) => (
   <MenuItemLinkStyled large={size === "large" ? 1 : 0} href={`/${linkUrl}`}>
-    <BackgroundImageStyled imageUrl={imageUrl} />
+    <BackgroundImageStyled
+      imageUrl={isWebPSupported ? imageUrlWebP : imageUrl}
+    />
     <ContentStyled>
       <TitleStyled>{title.toUpperCase()}</TitleStyled>
-      <SubtitleStyled>
-        SHOP NOW | {isWebPSupported ? "Webp" : "PNG"}
-      </SubtitleStyled>
+      <SubtitleStyled>SHOP NOW</SubtitleStyled>
     </ContentStyled>
   </MenuItemLinkStyled>
 );
