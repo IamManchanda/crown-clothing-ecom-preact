@@ -39,12 +39,28 @@ const App = ({ currentUser, checkUserSession, isWebPSupportedStart }) => {
             content:
               "Shop Men's & Women's Clothing, Hats, Sneakers and Jackets at Crown Clothing",
           },
+          {
+            "http-equiv": "x-dns-prefetch-control",
+            content: "on",
+          },
         ]}
         link={[
           {
             rel: "stylesheet",
             href:
               "https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap",
+          },
+          {
+            rel: "dns-prefetch",
+            href: "https://fonts.googleapis.com",
+          },
+          {
+            rel: "dns-prefetch",
+            href: "https://firestore.googleapis.com",
+          },
+          {
+            rel: "dns-prefetch",
+            href: "https://firebasestorage.googleapis.com",
           },
         ]}
       />
