@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { useState, useEffect } from "preact/hooks";
 import styled from "styled-components";
 import { Link } from "preact-router/match";
 
@@ -37,22 +38,37 @@ const FooterStyled = styled.div`
   margin-top: 25px;
 `;
 
-const CollectionPreview = ({ title, items, routeName }) => (
-  <CollectionPreviewStyled>
-    <TitleStyled>{title.toUpperCase()}</TitleStyled>
-    <PreviewStyled>
-      {items
-        .filter((item, idx) => idx < 4)
-        .map((item) => (
-          <CollectionItem key={item.id} item={item} />
-        ))}
-    </PreviewStyled>
-    <FooterStyled>
-      <Link href={`/shop/${routeName}`}>
-        <CustomButton>Visit {title.toUpperCase()} Category</CustomButton>
-      </Link>
-    </FooterStyled>
-  </CollectionPreviewStyled>
-);
+const CollectionPreview = ({ title, items, routeName }) => {
+  const [filteredCount, setFilteredCount] = useState(4);
+  useEffect(() => {
+    const updateFilteredCount = () => {
+      if (window.matchMedia("(max-width: 767px)").matches) {
+        setFilteredCount(2);
+      } else {
+        setFilteredCount(4);
+      }
+    };
+    window.addEventListener("resize", updateFilteredCount);
+    updateFilteredCount();
+    return () => window.removeEventListener("resize", updateFilteredCount);
+  }, []);
+  return (
+    <CollectionPreviewStyled>
+      <TitleStyled>{title.toUpperCase()}</TitleStyled>
+      <PreviewStyled>
+        {items
+          .filter((item, idx) => idx < filteredCount)
+          .map((item) => (
+            <CollectionItem key={item.id} item={item} />
+          ))}
+      </PreviewStyled>
+      <FooterStyled>
+        <Link href={`/shop/${routeName}`}>
+          <CustomButton>Visit {title.toUpperCase()} Category</CustomButton>
+        </Link>
+      </FooterStyled>
+    </CollectionPreviewStyled>
+  );
+};
 
 export default CollectionPreview;
