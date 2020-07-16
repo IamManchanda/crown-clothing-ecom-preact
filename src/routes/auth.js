@@ -1,4 +1,5 @@
-import { h } from "preact";
+import { h, Fragment } from "preact";
+import Helmet from "preact-helmet";
 import styled from "styled-components";
 
 import SignIn from "../components/sign-in";
@@ -17,10 +18,13 @@ const AuthPageStyled = styled.div`
 `;
 
 const AuthPage = () => (
-  <AuthPageStyled>
-    <SignIn />
-    <SignUp />
-  </AuthPageStyled>
+  <Fragment>
+    <Helmet title="Auth" />
+    <AuthPageStyled>
+      <SignIn />
+      <SignUp />
+    </AuthPageStyled>
+  </Fragment>
 );
 
 export default AuthPage;

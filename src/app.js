@@ -30,7 +30,8 @@ const App = ({ currentUser, checkUserSession, isWebPSupportedStart }) => {
     <div id="app">
       <Helmet
         htmlAttributes={{ lang: "en", amp: undefined }} // amp takes no value
-        title="Crown Clothing"
+        titleTemplate="%s | Crown Clothing"
+        defaultTitle="Crown Clothing"
         titleAttributes={{ itemprop: "name", lang: "en" }}
         meta={[
           {

@@ -1,4 +1,5 @@
-import { h } from "preact";
+import { h, Fragment } from "preact";
+import Helmet from "preact-helmet";
 import { useEffect } from "preact/hooks";
 import { connect } from "react-redux";
 import styled from "styled-components";
@@ -18,9 +19,12 @@ const HomePage = ({ fetchSectionsStart }) => {
   }, [fetchSectionsStart]);
 
   return (
-    <HomePageStyled>
-      <DirectoryMenu />
-    </HomePageStyled>
+    <Fragment>
+      <Helmet title="Home" />
+      <HomePageStyled>
+        <DirectoryMenu />
+      </HomePageStyled>
+    </Fragment>
   );
 };
 

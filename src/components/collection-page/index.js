@@ -1,4 +1,5 @@
-import { h } from "preact";
+import { h, Fragment } from "preact";
+import Helmet from "preact-helmet";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
@@ -37,16 +38,19 @@ const CollectionItemWrapperStyled = styled.div`
 `;
 
 const CollectionPage = ({ collection: { title, items } = {} }) => (
-  <CollectionPageStyled>
-    <TitleStyled>{title}</TitleStyled>
-    <CollectionItemsContainerStyled>
-      {items.map((item) => (
-        <CollectionItemWrapperStyled key={item.id}>
-          <CollectionItem item={item} />
-        </CollectionItemWrapperStyled>
-      ))}
-    </CollectionItemsContainerStyled>
-  </CollectionPageStyled>
+  <Fragment>
+    <Helmet title={`Shop: ${title}`} />
+    <CollectionPageStyled>
+      <TitleStyled>{title}</TitleStyled>
+      <CollectionItemsContainerStyled>
+        {items.map((item) => (
+          <CollectionItemWrapperStyled key={item.id}>
+            <CollectionItem item={item} />
+          </CollectionItemWrapperStyled>
+        ))}
+      </CollectionItemsContainerStyled>
+    </CollectionPageStyled>
+  </Fragment>
 );
 
 const mapStateToProps = (state, ownProps) => ({

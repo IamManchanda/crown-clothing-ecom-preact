@@ -1,4 +1,5 @@
-import { h } from "preact";
+import { h, Fragment } from "preact";
+import Helmet from "preact-helmet";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import styled from "styled-components";
@@ -12,11 +13,14 @@ const CollectionsOverviewStyled = styled.div`
 `;
 
 const CollectionsOverview = ({ collections }) => (
-  <CollectionsOverviewStyled>
-    {collections.map(({ id, ...otherCollectionProps }) => (
-      <CollectionPreview key={id} {...otherCollectionProps} />
-    ))}
-  </CollectionsOverviewStyled>
+  <Fragment>
+    <Helmet title="Shop" />
+    <CollectionsOverviewStyled>
+      {collections.map(({ id, ...otherCollectionProps }) => (
+        <CollectionPreview key={id} {...otherCollectionProps} />
+      ))}
+    </CollectionsOverviewStyled>
+  </Fragment>
 );
 
 const mapStateToProps = createStructuredSelector({

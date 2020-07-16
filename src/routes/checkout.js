@@ -1,4 +1,5 @@
-import { h } from "preact";
+import { h, Fragment } from "preact";
+import Helmet from "preact-helmet";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
@@ -79,27 +80,30 @@ const CheckoutPage = ({ cartItems, totalPrice }) => {
     "Remove",
   ];
   return (
-    <CheckoutPageStyled>
-      <CheckoutHeaderStyled>
-        {headerBlockTitles.map((title, idx) => (
-          <HeaderBlockStyled key={idx}>
-            <span>{title}</span>
-          </HeaderBlockStyled>
+    <Fragment>
+      <Helmet title="Checkout" />
+      <CheckoutPageStyled>
+        <CheckoutHeaderStyled>
+          {headerBlockTitles.map((title, idx) => (
+            <HeaderBlockStyled key={idx}>
+              <span>{title}</span>
+            </HeaderBlockStyled>
+          ))}
+        </CheckoutHeaderStyled>
+        {cartItems.map((cartItem) => (
+          <CheckoutItem key={cartItem.id} cartItem={cartItem} />
         ))}
-      </CheckoutHeaderStyled>
-      {cartItems.map((cartItem) => (
-        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-      ))}
-      <TotalPriceStyled>
-        <span>Total: ${totalPrice}</span>
-      </TotalPriceStyled>
-      <TestWarningStyled>
-        *Please don't use your credit card, instead <br /> use the following
-        test credit card for payment* <br /> <br />
-        4242 4242 4242 4242 - Exp: 01/70 - Cvv: 123
-      </TestWarningStyled>
-      <StripeCheckoutButton price={totalPrice} />
-    </CheckoutPageStyled>
+        <TotalPriceStyled>
+          <span>Total: ${totalPrice}</span>
+        </TotalPriceStyled>
+        <TestWarningStyled>
+          *Please don't use your credit card, instead <br /> use the following
+          test credit card for payment* <br /> <br />
+          4242 4242 4242 4242 - Exp: 01/70 - Cvv: 123
+        </TestWarningStyled>
+        <StripeCheckoutButton price={totalPrice} />
+      </CheckoutPageStyled>
+    </Fragment>
   );
 };
 
