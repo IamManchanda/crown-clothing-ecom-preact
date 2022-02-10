@@ -35,7 +35,7 @@
   "dependencies": {
     "firebase": "^7.16.0",
     "lodash.memoize": "^4.1.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "preact": "^10.3.2",
     "preact-cli-svg-loader": "^1.1.0",
     "preact-helmet": "^4.0.0-alpha-3",
